@@ -405,7 +405,7 @@ let g:miniBufExplorerMoreThanOne = 0
 let g:miniBufExplModSelTarget = 0
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 30
+let g:miniBufExplVSplit = 15
 let g:miniBufExplSplitBelow=1
 
 autocmd BufRead,BufNew :call UMiniBufExplorer
@@ -439,7 +439,7 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-#au FileType javascript call JavaScriptFold()
+" au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -521,6 +521,7 @@ map <leader>pp :setlocal paste!<cr>
 
 map <leader>bb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
+map <leader>cp :cd c:/projects<cr>
 
 if MySys() == "mac"
     if has("gui_running")
