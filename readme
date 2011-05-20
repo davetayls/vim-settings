@@ -1,0 +1,18 @@
+This is my cross platform vim settings
+======================================
+
+Major inspiration has been taken from http://amix.dk. thanks!
+
+Install
+-------
+- Add this to the system's vimrc file
+- Change the $1 to "mac", "linux" or "windows" depending on the system
+- Update the paths.
+
+fun! MySys()
+   return "$1"
+endfun
+
+set runtimepath=~/.vim_runtime,~/.vim_runtime/after,\$VIMRUNTIME
+source ~/.vim_runtime/vimrc
+helptags ~/.vim_runtime/doc' > ~/.vimrc
