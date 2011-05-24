@@ -37,7 +37,7 @@ set hid "Change buffer - without saving
 
 " Set backspace config
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+set whichwrap+=<,>,h,l "Allow these left/right keys to move the cursor across lines
 
 set ignorecase "Ignore case when searching
 set smartcase
@@ -225,6 +225,7 @@ map k gk
 
 " Map space to / (search) and c-space to ? (backgwards search)
 map <space> /
+map <s-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move btw. windows
@@ -338,7 +339,7 @@ vnoremap $e <esc>`>a"<esc>`<i"<esc>
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
-inoremap $3 {<cr>}<esc><s-O>
+inoremap $3 {}<left>
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
@@ -398,24 +399,6 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
-
-
-""""""""""""""""""""""""""""""
-" => Minibuffer plugin
-""""""""""""""""""""""""""""""
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplorerMoreThanOne = 0
-"let g:miniBufExplModSelTarget = 0
-"let g:miniBufExplUseSingleClick = 1
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplVSplit = 15
-"let g:miniBufExplSplitBelow=1
-"
-"autocmd BufRead,BufNew :call UMiniBufExplorer
-"
-"map <leader>u :TMiniBufExplorer<cr>
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
@@ -490,7 +473,7 @@ nmap <leader>ntf :NERDTreeFind<cr>
 " => Command-T
 """"""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi
+set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,*.gif,*.png,*.jpg
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
@@ -500,7 +483,8 @@ let g:CommandTMatchWindowReverse = 1
 " => Zen Coding
 """"""""""""""""""""""""""""""
 " let g:user_zen_leader_key = '<c-y>'
-au FileType html imap <leader><tab> <c-y>,
+imap <leader><tab> <c-y>,
+vmap <leader><tab> <c-y>,
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -516,7 +500,8 @@ set grepprg=/bin/grep\ -nH
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-map <leader>q :w<cr>:q<cr>
+map <leader>q :w<cr>:bd<cr>
+map <leader>ls :ls<cr>
 map <leader>s :w<cr>
 map <leader>pp :setlocal paste!<cr>
 
