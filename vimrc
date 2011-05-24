@@ -55,7 +55,7 @@ set mat=2 "How many tenths of a second to blink
 " No sound on errors
 set noerrorbells
 set novisualbell
-set virtualedit=all,onemore
+"set virtualedit=all,onemore
 set t_vb=
 set tm=500
 
@@ -129,6 +129,7 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+map <cs-f> :vimgrep // **/*.<left><left><left><left><left><left><left>
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
@@ -234,6 +235,8 @@ map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
+"switch to next buffer
+map <leader>bn :bn<cr>
 
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
@@ -335,7 +338,7 @@ vnoremap $e <esc>`>a"<esc>`<i"<esc>
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
+inoremap $3 {<cr>}<esc><s-O>
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
@@ -400,17 +403,17 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplorerMoreThanOne = 0
-let g:miniBufExplModSelTarget = 0
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 15
-let g:miniBufExplSplitBelow=1
-
-autocmd BufRead,BufNew :call UMiniBufExplorer
-
-map <leader>u :TMiniBufExplorer<cr>
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplorerMoreThanOne = 0
+"let g:miniBufExplModSelTarget = 0
+"let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplVSplit = 15
+"let g:miniBufExplSplitBelow=1
+"
+"autocmd BufRead,BufNew :call UMiniBufExplorer
+"
+"map <leader>u :TMiniBufExplorer<cr>
 
 
 
@@ -439,7 +442,7 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-" au FileType javascript call JavaScriptFold()
+"au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -476,7 +479,7 @@ let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
-"let g:NERDTreeIgnore=[]
+let g:NERDTreeIgnore=['\~$','\.svn']
 
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
@@ -487,7 +490,7 @@ nmap <leader>ntf :NERDTreeFind<cr>
 " => Command-T
 """"""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
@@ -497,7 +500,7 @@ let g:CommandTMatchWindowReverse = 1
 " => Zen Coding
 """"""""""""""""""""""""""""""
 " let g:user_zen_leader_key = '<c-y>'
-au FileType html map <CM-Enter> <c-y>,
+au FileType html imap <leader><tab> <c-y>,
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -513,10 +516,8 @@ set grepprg=/bin/grep\ -nH
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-"Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-au BufRead,BufNewFile ~/buffer iab <buffer> xh1 ===========================================
-
+map <leader>q :w<cr>:q<cr>
+map <leader>s :w<cr>
 map <leader>pp :setlocal paste!<cr>
 
 map <leader>bb :cd ..<cr>
@@ -532,5 +533,11 @@ endif
 " maximise the window to fit the screen
 au GUIEnter * set columns=9999
 au GUIEnter * set lines=999
+
+if MySys() == "mac"
+	au GUIEnter * :cd ~/Sites
+elseif MySys() == "windows"
+	au GUIEnter * :cd c:/projects
+endif
 
 
