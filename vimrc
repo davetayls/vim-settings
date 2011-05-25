@@ -171,6 +171,7 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Smart mappings on the command line
 cno $h e ~/
 cno $d c <C-\>eCurrentFileDir("e")<cr>
@@ -327,6 +328,19 @@ endfunction
 " Format the statusline
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Browsing and using external applications
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open file browser
+if MySys() == "mac"
+    nmap <f11> :!open %:p:h<CR>
+elseif MySys() == "windows"
+    nmap <leader>cmd :!start cmd %:p<cr>
+    nmap <F11> :!start explorer /select,%:p<cr>
+    imap <F11> <Esc><F11>
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -400,7 +414,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-inoremap <c-space> <C-x><C-o><C-p>
+inoremap <c-space> <C-x><C-o>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -461,7 +475,7 @@ nmap <leader>ntf :NERDTreeFind<cr>
 " => Command-T
 """"""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,*.gif,*.png,*.jpg
+set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
