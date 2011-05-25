@@ -89,6 +89,7 @@ else
 endif
 
 set encoding=utf8
+set fileformat=unix
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -343,8 +344,7 @@ inoremap $3 {}<left>
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
-inoremap $t <><esc>i
-
+inoremap '+ ' +  + '<left><left><left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Abbrevs
@@ -355,8 +355,9 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Remap VIM 0
+"Remap VIM home/end keys
 map 0 ^
+map 4 $
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -370,14 +371,6 @@ if MySys() == "mac"
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
-
-"Delete trailing white space, useful for Python ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
 
 set guitablabel=%t
 
@@ -408,7 +401,6 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 inoremap <c-space> <C-x><C-o><C-p>
-autocmd FileType javascript inoremap . <C-x><C-o><C-p>.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -429,11 +421,7 @@ map <leader>s? z=
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
-au FileType javascript imap <c-t> AJS.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-
-au FileType javascript inoremap <buffer> $r return 
-au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
+au FileType javascript nmap <leader>, $i,<cr>
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
