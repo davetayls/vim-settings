@@ -58,6 +58,10 @@ snippet 0 padding
 snippet 0 margin and padding
 	margin: 0;
 	padding: 0;
+snippet opacity
+	opacity: 0.${1:name};
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=${2:$1}0);
+	filter: alpha(opacity=${3:$1}0);
 # position
 # ------------------------------------
 snippet absolute

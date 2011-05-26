@@ -67,7 +67,7 @@ syntax enable "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
-  set gfn=Consolas:h13
+  set gfn=Consolas:h14
   set shell=/bin/bash
 elseif MySys() == "windows"
   set gfn=Consolas:h11
