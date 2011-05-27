@@ -19,6 +19,10 @@ snippet #
 # -------------------------------------
 snippet center text-align
 	text-align: center;
+# clearing 
+# --------------------------------------
+snippet cc clear container
+	${1}:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 # display values
 #--------------------------------------
 snippet inline
@@ -33,6 +37,13 @@ snippet inline-blockb
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
+snippet visuallyhidden
+	position:absolute;
+	display: block; 
+	top: auto; 
+	left: -10000px; 
+	width: 1px; 
+	height: 1px; 
 # fonts
 # -------------------------------------
 snippet bold

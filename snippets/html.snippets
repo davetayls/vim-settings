@@ -207,3 +207,23 @@ snippet htmlpage
 			<h1>${2:$1}<h1>
 		</body>
 	</html>
+# -------------------------------------------------
+# MICROFORMATS
+# -------------------------------------------------
+snippet vevent hCalendar
+	<div class="vevent">
+	    <h2 class="summary">${1}</h2>
+	    <a class="url" href="http://${2}">
+	 		${3}
+	 	</a>
+		<span class="dtstart">
+			<abbr class="value" title="${4:startdate}">${5:$4}</abbr> 
+			at <span class="value">${6:starttime}</span>
+		</span>		
+		<span class="dtend">
+			<abbr class="value" title="${7:enddate}">${8:$7}</abbr> 
+			at <span class="value">${9:endtime}</span>
+		</span>		
+		at the <span class="location">${10}</span>
+	</div>
+
