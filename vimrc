@@ -38,6 +38,7 @@ set hid "Change buffer - without saving
 " Set backspace config
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l "Allow these left/right keys to move the cursor across lines
+set cursorline
 
 set ignorecase "Ignore case when searching
 set smartcase
