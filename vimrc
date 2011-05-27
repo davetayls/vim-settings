@@ -18,6 +18,7 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>wa :wa!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,7 +132,7 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-map <cs-f> :vimgrep // **/*.<left><left><left><left><left><left><left>
+map <cs-f> :vimgrep // **/*.*<left><left><left><left><left><left><left><left>
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
@@ -428,6 +429,13 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+""""""""""""""""""""""""""""""
+" => html section
+"""""""""""""""""""""""""""""""
+au FileType html imap 7lt &l<space><bs>t;
+au FileType html imap 7gt &g<space><bs>t;
+au FileType html imap 7nbsp &n<space><bs>bsp;
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
