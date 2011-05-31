@@ -16,9 +16,6 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
-nmap <leader>wa :wa!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -511,6 +508,7 @@ set grepprg=/bin/grep\ -nH
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+map <leader>Q :bd<cr>:q<cr>
 map <leader>q :w<cr>:bd<cr>
 map <leader>ls :ls<cr>
 map <leader>s :w<cr>
@@ -519,6 +517,10 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>bb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
 map <leader>cp :cd c:/projects<cr>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+nmap <leader>wa :wa!<cr>
 
 if MySys() == "mac"
     if has("gui_running")

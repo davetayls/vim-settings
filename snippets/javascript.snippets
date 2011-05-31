@@ -8,7 +8,7 @@ snippet proto
 snippet fn
 	var ${1:function_name} = function(${2:argument}) {
 		${3:// body...}
-	}
+	};
 # Function
 snippet fun
 	function ${1:function_name}(${2:argument}) {
@@ -21,11 +21,16 @@ snippet f last argument function
 	});
 # if
 snippet if
-	if (${1:true}) {${2}};
+	if (${1:true}) {
+		${2}
+	};
 # if ... else
 snippet ife
-	if (${1:true}) {${2}}
-	else{${3}};
+	if (${1:true}) {
+		${2}
+	} else {
+		${3}
+	};
 # tertiary conditional
 snippet t
 	${1:/* condition */} ? ${2:a} : ${3:b}
