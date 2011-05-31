@@ -31,7 +31,7 @@ set ruler "Always show current position
 set cmdheight=1 "The commandbar height
 set showcmd "Show incomplete commands in commandbar
 
-set hid "Change buffer - without saving
+" set hid "Change buffer - without saving
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -245,7 +245,7 @@ map <leader>ba :1,300 bd!<cr>
 
 
 " Tab configuration
-map <leader>tn :tabnew! %<cr>
+map <leader>tn :tabnew!<cr>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -335,8 +335,8 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ 
 if MySys() == "mac"
     nmap <f11> :!open %:p:h<CR>
 elseif MySys() == "windows"
-    nmap <leader>cmd :!start cmd %:p<cr>
-    nmap <F11> :!start explorer /select,%:p<cr>
+    nmap <leader>cmd :!start cmd %:p:h<cr>
+    nmap <F11> :!start explorer /select,%:p:h<cr>
     imap <F11> <Esc><F11>
 endif
 
@@ -488,6 +488,10 @@ let g:CommandTMatchWindowReverse = 1
 "let g:CommandTMatchWindowAtTop = 1
 
 """"""""""""""""""""""""""""""
+" => Source Control
+""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
 " => Zen Coding
 """"""""""""""""""""""""""""""
 " let g:user_zen_leader_key = '<c-y>'
@@ -506,6 +510,7 @@ set grepprg=/bin/grep\ -nH
 " => MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 map <leader>Q :bd<cr>:q<cr>
