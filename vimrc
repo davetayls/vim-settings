@@ -58,6 +58,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set shellslash " use unix path separators
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -364,6 +365,11 @@ inoremap '+ ' +  + '<left><left><left><left>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Calculations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" em calculations
+imap <leader>em <c-r>=00/12<left><left><left><left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -414,6 +420,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 inoremap <c-space> <C-x><C-o>
+inoremap <a-space> <C-x><C-f>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -433,6 +440,7 @@ map <leader>s? z=
 au FileType html imap 7lt &l<space><bs>t;
 au FileType html imap 7gt &g<space><bs>t;
 au FileType html imap 7nbsp &n<space><bs>bsp;
+au FileType html imap 77 &a<space><bs>mp;
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -525,6 +533,7 @@ map <leader>cp :cd c:/projects<cr>
 
 " Fast saving
 nmap <leader>w :w!<cr>
+imap <leader>w <esc>:w!<cr>
 nmap <leader>wa :wa!<cr>
 
 if MySys() == "mac"
