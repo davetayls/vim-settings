@@ -333,10 +333,11 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open file browser
 if MySys() == "mac"
-    nmap <f11> :!open %:p:h<CR>
+    nmap <f11> :!open --reveal %:p<CR>
+    nmap <leader>cmd :!open -a /Applications/Utilities/Terminal.app %:p:h<cr>
 elseif MySys() == "windows"
     nmap <leader>cmd :!start cmd %:p:h<cr>
-    nmap <F11> :!start explorer /select,%:p:h<cr>
+    nmap <F11> :!start explorer /select,%:p<cr>
     imap <F11> <Esc><F11>
 endif
 
