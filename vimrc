@@ -230,11 +230,15 @@ map <space> /
 map <s-space> ?
 map <silent> <leader><cr> :noh<cr>
 
+" Smart way to move btw. tabs
+map <C-j> :tabN<cr>
+map <C-k> :tabn<cr>
+
 " Smart way to move btw. windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <CS-j> <C-W>j
+" map <CS-k> <C-W>k
+map <CS-h> <C-W>h
+map <CS-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -315,7 +319,7 @@ function! GitBranch()
 endfunction
 
 function! CurDir()
-    return substitute(getcwd(), '/Users/amir/', "~/", "g")
+    return getcwd()
 endfunction
 
 function! HasPaste()
