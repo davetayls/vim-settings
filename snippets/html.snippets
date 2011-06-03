@@ -163,13 +163,6 @@ snippet fieldset
 
 		${3}
 	</fieldset>
-snippet form
-	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
-		${3}
-
-
-	<p><input type="submit" value="Continue &rarr;"`Close()`></p>
-	</form>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet input
@@ -207,6 +200,31 @@ snippet htmlpage
 			<h1>${2:$1}<h1>
 		</body>
 	</html>
+# -------------------------------------------------
+# FORMS
+# -------------------------------------------------
+snippet form
+	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
+		${3}
+	</form>
+snippet fielditm
+	<div class="field-item">
+		<label for="${1:id}" class="label-text">
+			${2}
+		</label>
+		<input id="${3:$1}" name="${4:$1}" type="${5:text}" />
+	</div>
+snippet fielditmreq
+	<div class="field-item">
+		<label for="${1:id}" class="label-text">
+			${2} <abbr class="required" title="required">*</abbr>
+		</label>
+		<input id="${3:$1}" name="${4:$1}" type="${5:text}" />
+	</div>
+snippet btngrp button group
+	<div class="button-group">
+		<input name="${1}" type="submit" value="${2}" />
+	</div>
 # -------------------------------------------------
 # MICROFORMATS
 # -------------------------------------------------
