@@ -197,7 +197,7 @@ snippet htmlpage
 			<title>${1:title}</title>
 		</head>
 		<body>
-			<h1>${2:$1}<h1>
+			<h1>${2:$1}</h1>
 		</body>
 	</html>
 # -------------------------------------------------
@@ -207,6 +207,8 @@ snippet form
 	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
 		${3}
 	</form>
+snippet hidden
+	<input name="${1}" value="${2}" type="hidden" />
 snippet fielditm
 	<div class="field-item">
 		<label for="${1:id}" class="label-text">
