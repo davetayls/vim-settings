@@ -90,3 +90,21 @@ snippet /**
 		${1}
 	-------------------------------------------------------*/
 	${2}
+#
+# jQuery
+# --------------------------------------------
+snippet jqueryplg jquery plugin template
+	/*!
+	 * jquery.${1:name}
+	 * 
+	 * Dual licensed under the MIT and GPL licenses.
+	 * http://docs.jquery.com/License
+	*/	
+	(function($) {
+
+		$.fn.${2:$1} = function(){
+			${3}
+		};
+
+	}(jQuery));
+

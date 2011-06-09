@@ -106,6 +106,7 @@ set noswapfile
 set expandtab
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 set smarttab
 
 set lbr
@@ -130,7 +131,8 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
 map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-map <cs-f> :vimgrep // **/*.*<left><left><left><left><left><left><left><left>
+map <c-f> :vimgrep // **/*.*<left><left><left><left><left><left><left><left>
+map <c-f><c-c> :vimgrep // **/*.css<left><left><left><left><left><left><left><left><left><left>
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
@@ -250,7 +252,7 @@ map <leader>ba :1,300 bd!<cr>
 
 
 " Tab configuration
-map <leader>tn :tabnew!<cr>
+map <leader>tn :tabnew!<cr>:NERDTree<CR>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -368,7 +370,9 @@ inoremap '+ ' +  + '<left><left><left><left>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Abbrevs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iab xdatet <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
+iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Calculations
@@ -442,10 +446,14 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => html section
 """""""""""""""""""""""""""""""
+" entities
 au FileType html imap 7lt &l<space><bs>t;
 au FileType html imap 7gt &g<space><bs>t;
 au FileType html imap 7nbsp &n<space><bs>bsp;
 au FileType html imap 77 &a<space><bs>mp;
+
+" tags
+au FileType html nmap <leader>, f>i<space>
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -523,8 +531,8 @@ set grepprg=/bin/grep\ -nH
 " => MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
 map <leader>Q :bd<cr>:q<cr>
 map <leader>q :w<cr>:bd<cr>

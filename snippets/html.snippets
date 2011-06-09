@@ -165,10 +165,8 @@ snippet fieldset
 	</fieldset>
 snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
-snippet input
-	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
-snippet label
-	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
+snippet iframe
+	<iframe src="${1}" width="${2}" height="${3}">${4}</iframe>
 snippet link
 	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()`>${4}
 snippet mailto
@@ -227,6 +225,10 @@ snippet btngrp button group
 	<div class="button-group">
 		<input name="${1}" type="submit" value="${2}" />
 	</div>
+snippet input
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
+snippet label
+	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
 # -------------------------------------------------
 # MICROFORMATS
 # -------------------------------------------------
@@ -249,5 +251,20 @@ snippet vevent hCalendar
 # -------------------------------------------------
 # Appia
 # -------------------------------------------------
+snippet rappiah appia layout header
+	@{
+		Layout = "${1}";
+	}${2}
 snippet rpartial render partial
 	@RenderPartial("${1}"${2})
+# -------------------------------------------------
+# jQuery UI
+# -------------------------------------------------
+snippet jqtabs
+	<div class="nav-tabs">
+		<ul class="nav-tabs-nav">
+			${1}
+		</ul>
+		<div id="${2}" class="nav-tab">
+		</div>
+	</div>

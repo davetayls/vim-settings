@@ -35,15 +35,15 @@ snippet inline
 	display: inline;
 snippet block
 	display: block;
-snippet inline-block
+snippet inlineb
 	display: -moz-inline-stack;
 	display: inline-block;
-snippet inline-blockb
+snippet inlinebb
 	display: -moz-inline-stack;
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
-snippet visuallyhidden
+snippet vishid
 	position:absolute;
 	display: block; 
 	top: auto; 
@@ -66,19 +66,34 @@ snippet normal font-style
 	font-style: normal;
 snippet normal word-spacing
 	word-spacing: normal;
+# lists
+# ------------------------------------
+snippet resetlist
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
 # misc
 # ------------------------------------
 snippet 0 margin
 	margin: 0;
 snippet 0 padding
 	padding: 0;
-snippet 0 margin and padding
+snippet 00 margin and padding
 	margin: 0;
 	padding: 0;
 snippet opacity
 	opacity: 0.${1:name};
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=${2:$1}0);
 	filter: alpha(opacity=${3:$1}0);
+snippet z z-index
+	z-index: ${1};${2}
+#
+# overflow
+# ------------------------------------
+snippet hidden
+	overflow: hidden;
+snippet hid
+	overflow: hidden;
 # position
 # ------------------------------------
 snippet absolute
