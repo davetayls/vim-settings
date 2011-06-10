@@ -24,32 +24,32 @@ let g:mapleader = ","
 " Set 7 lines to the curors - when moving vertical..
 set so=7
 
-set wildmenu "Turn on WiLd menu
+set wildmenu                        "Turn on WiLd menu
 
-set ruler "Always show current position
+set ruler                           "Always show current position
 
-set cmdheight=1 "The commandbar height
-set showcmd "Show incomplete commands in commandbar
+set cmdheight=1                     "The commandbar height
+set showcmd                         "Show incomplete commands in commandbar
 
 " set hid "Change buffer - without saving
 
 " Set backspace config
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l "Allow these left/right keys to move the cursor across lines
+set whichwrap+=<,>,h,l              "Allow these left/right keys to move the cursor across lines
 set cursorline
 
-set ignorecase "Ignore case when searching
+set ignorecase                      "Ignore case when searching
 set smartcase
 
-set hlsearch "Highlight search things
+set hlsearch                        "Highlight search things
 
-set incsearch "Make search act like search in modern browsers
-set nolazyredraw "Don't redraw while executing macros 
+set incsearch                       "Make search act like search in modern browsers
+set nolazyredraw                    "Don't redraw while executing macros 
 
-set magic "Set magic on, for regular expressions
+set magic                           "Set magic on, for regular expressions
 
-set showmatch "Show matching bracets when text indicator is over them
-set mat=2 "How many tenths of a second to blink
+set showmatch                       "Show matching bracets when text indicator is over them
+set mat=2                           "How many tenths of a second to blink
 
 " No sound on errors
 set noerrorbells
@@ -58,12 +58,12 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set shellslash " use unix path separators
+set shellslash                      " use unix path separators
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable "Enable syntax hl
+syntax enable                       "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
@@ -112,9 +112,9 @@ set smarttab
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set nowrap "don't wrap lines
+set ai                              "Auto indent
+set si                              "Smart indent
+set nowrap                          "don't wrap lines
 
 
 """"""""""""""""""""""""""""""
@@ -232,20 +232,18 @@ map <space> /
 map <s-space> ?
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move btw. tabs
-map <C-j> :tabN<cr>
-map <C-k> :tabn<cr>
+" moving between tabs
+map <c-j> :tabN<cr>
+map <c-k> :tabn<cr>
 
-" Smart way to move btw. windows
-" map <CS-j> <C-W>j
-" map <CS-k> <C-W>k
-map <CS-h> <C-W>h
-map <CS-l> <C-W>l
+" move between windows
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
-"switch to next buffer
-map <leader>bn :bn<cr>
 
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
@@ -366,6 +364,7 @@ inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
 inoremap '+ ' +  + '<left><left><left><left>
+inoremap §= ' +  + '<left><left><left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Abbrevs
@@ -386,6 +385,10 @@ imap <leader>em <c-r>=00/12<left><left><left><left><left>
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
+" remove extra space when joining lines
+map J Jx
+" make use of non-useful keys
+map § "
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -511,15 +514,15 @@ let g:CommandTMatchWindowReverse = 1
 """"""""""""""""""""""""""""""
 " => Syntastic
 """"""""""""""""""""""""""""""
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_enable_signs=1
-" let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 " let g:syntastic_quiet_warnings=1
 
-" run SyntasticEnable html
+run SyntasticEnable html
 
 """"""""""""""""""""""""""""""
 " => Source Control
