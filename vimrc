@@ -346,6 +346,7 @@ elseif MySys() == "windows"
     nmap <leader>cmd :!start cmd %:p:h<cr>
     nmap <F11> :!start explorer /select,%:p<cr>
     imap <F11> <Esc><F11>
+    nmap <F12> :!start %:p<cr>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
