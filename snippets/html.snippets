@@ -123,7 +123,7 @@ snippet script
 snippet scriptsrc
 	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
 snippet style
-	<style type="text/css" media="${1:screen}">
+	<style type="text/css">
 		${2}
 	</style>${3}
 snippet base
@@ -167,6 +167,8 @@ snippet h1
 	<h1 id="${1:heading}">${2:$1}</h1>
 snippet iframe
 	<iframe src="${1}" width="${2}" height="${3}">${4}</iframe>
+snippet img
+	<img src="${1}" alt="${2}" />
 snippet link
 	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"`Close()`>${4}
 snippet mailto
