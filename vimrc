@@ -371,6 +371,17 @@ elseif MySys() == "windows"
     nmap <leader>cmd :!start cmd %:p:h<cr>
     nmap <F11> :!start explorer /select,%:p<cr>
     imap <F11> <Esc><F11>
+    nmap <F12> :!start %:p<cr>
+endif
+
+" web browsers
+if MySys() == "mac"
+elseif MySys() == "windows"
+    cabbrev ff !start c:\Program Files (x86)\Mozilla Firefox\firefox.exe file:///%:p
+    cabbrev ff20 !start D:\Dropbox\programs\firefox\run-firefox20.bat file:///%:p
+    cabbrev ff30 !start D:\Dropbox\programs\firefox\run-firefox30.bat file:///%:p
+    cabbrev ff35 !start D:\Dropbox\programs\firefox\run-firefox35.bat file:///%:p
+    cabbrev ff36 !start D:\Dropbox\programs\firefox\run-firefox36.bat file:///%:p
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
