@@ -1,4 +1,21 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections
+"
+" - General
+" - Vim user interface
+" - Colours and fonts
+" - Files, backups and undo
+" - Text, tab and indent related
+" - Visual mode related
+" - Command mode related
+" - Moving around, tabs and buffers
+" - Statusline
+" - Plugins
+" - Misc
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -99,6 +116,16 @@ set fileformat=unix
 set nobackup
 set nowb
 set noswapfile
+
+" diff current file with it's saved version
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -385,8 +412,6 @@ imap <leader>em <c-r>=00/12<left><left><left><left><left>
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
-" remove extra space when joining lines
-map J Jx
 " make use of non-useful keys
 map § "
 
@@ -413,16 +438,6 @@ set guitablabel=%t
 map <leader>cc :cw<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
-
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
@@ -457,6 +472,8 @@ au FileType html imap 77 &a<space><bs>mp;
 
 " tags
 au FileType html nmap <leader>, f>i<space>
+" remove space when joining lines
+au FileType html nmap J Jx
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -479,16 +496,13 @@ function! JavaScriptFold()
 endfunction
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
 """"""""""""""""""""""""""""""
 " => MRU plugin
-""""""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
 map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
 " => NERDTree
-""""""""""""""""""""""""""""""
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
@@ -500,37 +514,24 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntf :NERDTreeFind<cr>
 
-
-""""""""""""""""""""""""""""""
 " => Command-T
-""""""""""""""""""""""""""""""
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
 "let g:CommandTMatchWindowAtTop = 1
-
-""""""""""""""""""""""""""""""
 " => Syntastic
-""""""""""""""""""""""""""""""
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+" let g:syntastic_auto_loc_list=1
 " let g:syntastic_quiet_warnings=1
 
 run SyntasticEnable html
-
-""""""""""""""""""""""""""""""
-" => Source Control
-""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
 " => Zen Coding
-""""""""""""""""""""""""""""""
 " let g:user_zen_leader_key = '<c-y>'
 imap <leader><tab> <c-y>,
 vmap <leader><tab> <c-y>,
@@ -553,7 +554,6 @@ noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 map <leader>Q :bd<cr>:q<cr>
 map <leader>q :w<cr>:bd<cr>
 map <leader>ls :ls<cr>
-map <leader>s :w<cr>
 map <leader>pp :setlocal paste!<cr>
 
 map <leader>bb :cd ..<cr>
