@@ -477,10 +477,23 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " entities
-au FileType html imap 7lt &l<space><bs>t;
-au FileType html imap 7gt &g<space><bs>t;
-au FileType html imap 7nbsp &n<space><bs>bsp;
-au FileType html imap 77 &a<space><bs>mp;
+au FileType html iab 7lt &lt;
+au FileType html iab 7gt &gt;
+au FileType html iab 7nb &nbsp;
+au FileType html iab 77 &amp;
+au FileType html imap <s-cr> <br /><cr>
+
+function HtmlEscape()
+  silent s/\%V&/\&amp;/eg
+  silent s/\%V</\&lt;/eg
+  silent s/\%V>/\&gt;/eg
+endfunction
+
+function HtmlUnEscape()
+  silent s/\%V&lt;/</eg
+  silent s/\%V&gt;/>/eg
+  silent s/\%V&amp;/\&/eg
+endfunction
 
 " tags
 au FileType html nmap <leader>, f>i<space>

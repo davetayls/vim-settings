@@ -1,4 +1,6 @@
 # Some useful Unicode entities
+snippet abbr
+	<abbr title="${1}">${2}</abbr>
 # Non-Breaking Space
 snippet nbs
 	&nbsp;
@@ -258,6 +260,13 @@ snippet fieldrad
 		<input type="radio" id="${1:name}" name="${2:$1}" />
 		<label for="${3:$1}" class="label-text">${4}</label>
 	</li>${5}
+snippet fieldarea
+	<div class="field-item">
+		<label for="${1:id}" class="label-text">
+			${2}
+		</label>
+		<textarea id="${3:$1}" name="${4:$1}"></textarea>
+	</div>
 snippet group
 	<div class="field-group cp-${1}">
 		<span class="field-group-header">${2}</span>
@@ -276,6 +285,38 @@ snippet grouprad
 		<ul class="field-radioItems">
 			${2}
 		</ul>
+	</div>
+snippet groupdate
+	<div class="field-group cp-dateField">
+		<label for="day" class="field-group-header">${1}:</label>
+		<div class="field-item">
+			<label for="${2:prefix}day" class="label-text">Day</label>
+			<input type="text" name="${2:$2}day" />
+		</div>
+		<div class="field-item">
+			<label for="${3:$2}month" class="label-text">Month</label>
+			<select name="${4:$2}month">
+				<option>Jan</option>
+				<option>Feb</option>
+				<option>Mar</option>
+				<option>Apr</option>
+				<option>May</option>
+				<option>Jun</option>
+				<option>Jul</option>
+				<option>Aug</option>
+				<option>Sep</option>
+				<option>Oct</option>
+				<option>Nov</option>
+				<option>Dec</option>
+			</select>
+		</div>
+		<div class="field-item">
+			<label for="${5:$2}year" class="label-text">Year</label>
+			<select name="${6:$2}year">
+				<option>2011</option>
+				<option>2010</option>
+			</select>
+		</div>
 	</div>
 snippet input
 	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
