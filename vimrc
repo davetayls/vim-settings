@@ -459,6 +459,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 inoremap <c-space> <C-x><C-o>
 inoremap <a-space> <C-x><C-f>
+inoremap <c-l> <C-x><C-l>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking

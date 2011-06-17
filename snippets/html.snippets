@@ -200,6 +200,8 @@ snippet htmlpage
 			<h1>${2:$1}</h1>
 		</body>
 	</html>
+snippet zm zoom hasLayout
+	zoom: 1;${1}
 # -------------------------------------------------
 # FORMS
 # -------------------------------------------------
@@ -209,6 +211,17 @@ snippet form
 	</form>
 snippet hidden
 	<input name="${1}" value="${2}" type="hidden" />
+snippet btngrp button group
+	<div class="button-group">
+		<input name="${1}" type="submit" value="${2}" />
+	</div>
+snippet errorsum
+	<div class="form-errorSummary">
+		<h4>${1}</h4>
+		<ul>
+			<li><label for="error1">errordetails</label></li>
+		</ul>
+	</div>
 snippet fielditm
 	<div class="field-item">
 		<label for="${1:id}" class="label-text">
@@ -223,14 +236,43 @@ snippet fielditmreq
 		</label>
 		<input id="${3:$1}" name="${4:$1}" type="${5:text}" />
 	</div>
-snippet btngrp button group
-	<div class="button-group">
-		<input name="${1}" type="submit" value="${2}" />
+snippet fieldchk
+	<li class="field-item">
+		<input type="checkbox" id="${1:name}" name="${2:$1}" />
+		<label for="${3:$1}" class="label-text">${4}</label>
+	</li>${5}
+snippet fieldrad
+	<li class="field-item">
+		<input type="radio" id="${1:name}" name="${2:$1}" />
+		<label for="${3:$1}" class="label-text">${4}</label>
+	</li>${5}
+snippet group
+	<div class="field-group cp-${1}">
+		<span class="field-group-header">${2}</span>
+		${3}
+	</div>
+snippet groupchk
+	<div class="field-group cc">
+		<span class="field-group-header">${1}</span>
+		<ul class="field-checkItems">
+			${2}
+		</ul>
+	</div>
+snippet grouprad
+	<div class="field-group cc">
+		<span class="field-group-header">${1}</span>
+		<ul class="field-radioItems">
+			${2}
+		</ul>
 	</div>
 snippet input
 	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
 snippet label
 	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
+snippet labeldetail
+	<div class="label-detail">
+		${1}
+	</div>${2}
 # -------------------------------------------------
 # Lorem ipsum
 # -------------------------------------------------
