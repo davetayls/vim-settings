@@ -175,10 +175,22 @@ snippet mailto
 	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
 snippet meta
 	<meta name="${1:name}" content="${2:content}"`Close()`>${3}
+snippet nav
+	<nav><div class="nav${1}">
+		<h1>${2}</h1>
+		<ul>
+			${3}
+		</ul>
+	</div></nav>
 snippet opt
 	<option value="${1:option}">${2:$1}</option>${3}
 snippet optt
 	<option>${1:option}</option>${2}
+snippet section
+	<section${1}><div class="section">
+		<h1${2}>${3}</h1>
+		${4}
+	</div></section>
 snippet select
 	<select name="${1:some_name}" id="${2:$1}">
 		<option value="${3:option}">${4:$3}</option>

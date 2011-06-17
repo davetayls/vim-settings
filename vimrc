@@ -483,8 +483,6 @@ au FileType html imap 77 &a<space><bs>mp;
 
 " tags
 au FileType html nmap <leader>, f>i<space>
-" remove space when joining lines
-au FileType html nmap J Jx
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
