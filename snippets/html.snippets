@@ -1,6 +1,4 @@
 # Some useful Unicode entities
-snippet abbr
-	<abbr title="${1}">${2}</abbr>
 # Non-Breaking Space
 snippet nbs
 	&nbsp;
@@ -132,6 +130,8 @@ snippet base
 	<base href="${1}" target="${2}"`Close()`>
 snippet r
 	<br`Close()[1:]`>
+snippet abbr
+	<abbr title="${1}">${2}</abbr>
 # div snippets -----------------------------------------
 snippet div
 	<div>
@@ -257,8 +257,8 @@ snippet fieldchk
 	</li>${5}
 snippet fieldrad
 	<li class="field-item">
-		<input type="radio" id="${1:name}" name="${2:$1}" />
-		<label for="${3:$1}" class="label-text">${4}</label>
+		<input type="radio" id="${3:name}" name="${2}" />
+		<label for="${4:$3}" class="label-text">${1}</label>
 	</li>${5}
 snippet fieldarea
 	<div class="field-item">
@@ -283,7 +283,14 @@ snippet grouprad
 	<div class="field-group cc">
 		<span class="field-group-header">${1}</span>
 		<ul class="field-radioItems">
-			${2}
+			<li class="field-item">
+				<input type="checkbox" id="${4:first}" name="${3:name}" />
+				<label for="${5:$4}" class="label-text">${2}</label>
+			</li>
+			<li class="field-item">
+				<input type="checkbox" id="${8:second}" name="${7:$3}" />
+				<label for="${9:$8}" class="label-text">${6}</label>
+			</li>
 		</ul>
 	</div>
 snippet groupdate
@@ -322,7 +329,7 @@ snippet input
 	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}"`Close()`>${4}
 snippet label
 	<label for="${2:$1}">${1:name}</label><input type="${3:text/submit/hidden/button}" name="${4:$2}" value="${5}" id="${6:$2}"`Close()`>${7}
-snippet labeldetail
+snippet labeldet
 	<div class="label-detail">
 		${1}
 	</div>${2}
