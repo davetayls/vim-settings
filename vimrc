@@ -264,13 +264,15 @@ map <c-j> :tabN<cr>
 map <c-k> :tabn<cr>
 
 " move between windows
-" map <C-j> <C-W>j
-" map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-down> <C-W>j
+map <C-up> <C-W>k
+map <C-left> <C-W>h
+map <C-right> <C-W>l
 
-" Close the current buffer
+" move between buffers
 map <leader>bd :Bclose<cr>
+nmap <m-left> :bp<cr>
+nmap <m-right> :bn<cr>
 
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>

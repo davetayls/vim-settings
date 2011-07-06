@@ -74,13 +74,14 @@ snippet resetlist
 	padding: 0;
 # misc
 # ------------------------------------
-snippet 0 margin
-	margin: 0;
-snippet 0 padding
-	padding: 0;
 snippet 00 margin and padding
 	margin: 0;
 	padding: 0;
+snippet boxshad
+	-moz-box-shadow: ${1:value};
+	-webkit-box-shadow: ${2:$1};
+	-o-box-shadow: ${3:$1};
+	box-shadow: ${4:$1};
 snippet opacity
 	opacity: 0.${1:name};
 	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=${2:$1}0);
