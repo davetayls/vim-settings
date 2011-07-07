@@ -279,7 +279,7 @@ map <leader>ba :1,300 bd!<cr>
 
 
 " Tab configuration
-map <leader>tn :tabnew!<cr>:NERDTree<CR>
+map <leader>tn :tabnew!<cr>:NERDTreeMirror<CR>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -524,9 +524,15 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""
-" => MRU plugin
+" => Fuf/MRU plugin
 let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+map <leader>ff :FufJumpList<CR>
+map <leader>fb :FufBuffer<CR>
+map <leader>fl :FufLine<CR>
+let g:fuf_keyOpenSplit='<C-i>'
+let g:fuf_keyOpenVsplit='<C-s>'
+let g:fuf_autoPreview = 1
+
 " => NERDTree
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
