@@ -526,7 +526,9 @@ endfunction
 """"""""""""""""""""""""""""""
 " => Fuf/MRU plugin
 let MRU_Max_Entries = 400
+let MRU_Use_Current_Window = 1
 map <leader>ff :FufJumpList<CR>
+map <leader>fm :MRU<CR>
 map <leader>fb :FufBuffer<CR>
 map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
