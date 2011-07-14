@@ -157,10 +157,9 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-map <c-f> :vimgrep // **/*.*<left><left><left><left><left><left><left><left>
-map <c-f><c-c> :vimgrep // **/*.css<left><left><left><left><left><left><left><left><left><left>
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+command! -nargs=+ DFind execute 'noautocmd vimgrep! <args>' | copen 10
+map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
+map <c-f><c-c> :dFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
@@ -411,7 +410,7 @@ inoremap §= ' +  + '<left><left><left><left>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdatet <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
-iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
+" iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Calculations
@@ -583,19 +582,20 @@ set grepprg=/bin/grep\ -nH
 noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
-map <leader>Q :bd<cr>:q<cr>
 map <leader>q :w<cr>:bd<cr>
+map <leader>w :Bclose<cr>
 map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
+" quick navigation
 map <leader>bb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
 map <leader>cp :cd c:/projects<cr>
 
 " Fast saving
-nmap <leader>w :w!<cr>
-imap <leader>w <esc>:w!<cr>
-nmap <leader>wa :wa!<cr>
+nmap <leader>s :w!<cr>
+imap <leader>s <esc>:w!<cr>
+nmap <leader>sa :wa!<cr>
 
 if MySys() == "mac"
     if has("gui_running")
