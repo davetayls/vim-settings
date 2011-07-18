@@ -161,10 +161,9 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-map <c-f> :vimgrep // **/*.*<left><left><left><left><left><left><left><left>
-map <c-f><c-c> :vimgrep // **/*.css<left><left><left><left><left><left><left><left><left><left>
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+command! -nargs=+ DFind execute 'noautocmd vimgrep! <args>' | copen 10
+map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
+map <c-f><c-c> :dFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
@@ -335,6 +334,35 @@ endtry
 " Always hide the statusline
 set laststatus=2
 
+"Add the variable with the name a:varName to the statusline. Highlight it as
+"'error' unless its value is in a:goodValues (a comma separated string)
+function! AddStatuslineFlag(varName, goodValues)
+  set statusline+=[
+  set statusline+=%#error#
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',1)}"
+  set statusline+=%*
+  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',0)}"
+  set statusline+=]
+endfunction
+
+"returns a:value or ''
+"
+"a:goodValues is a comma separated string of values that shouldn't be
+"highlighted with the error group
+"
+"a:error indicates whether the string that is returned will be highlighted as
+"'error'
+"
+function! RenderStlFlag(value, goodValues, error)
+  let goodValues = split(a:goodValues, ',')
+  let good = index(goodValues, a:value) != -1
+  if (a:error && !good) || (!a:error && good)
+    return a:value
+  else
+    return ''
+  endif
+endfunction
+
 "Git branch
 function! GitBranch()
     try
@@ -344,25 +372,26 @@ function! GitBranch()
     endtry
 
     if branch != ''
-        return '   Git Branch: ' . substitute(branch, '\n', '', 'g')
-    en
+        return substitute(branch, '\n', '', 'g')
+    endif
 
     return ''
 endfunction
 
-function! CurDir()
-    return getcwd()
-endfunction
-
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-" Format the statusline
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+"statusline setup
+set statusline=%t       "tail of the filename
+call AddStatuslineFlag('&ff', 'unix')    "fileformat
+call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
+" set statusline+=%{GitBranch()} " git branch
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+" set statusline+=%{StatuslineCurrentHighlight()}
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -414,7 +443,7 @@ inoremap §= ' +  + '<left><left><left><left>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdatet <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
-iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
+" iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Calculations
@@ -586,19 +615,20 @@ set grepprg=/bin/grep\ -nH
 noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
-map <leader>Q :bd<cr>:q<cr>
 map <leader>q :w<cr>:bd<cr>
+map <leader>w :Bclose<cr>
 map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
+" quick navigation
 map <leader>bb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
 map <leader>cp :cd c:/projects<cr>
 
 " Fast saving
-nmap <leader>w :w!<cr>
-imap <leader>w <esc>:w!<cr>
-nmap <leader>wa :wa!<cr>
+nmap <leader>s :w!<cr>
+imap <leader>s <esc>:w!<cr>
+nmap <leader>sa :wa!<cr>
 
 if MySys() == "mac"
     if has("gui_running")
