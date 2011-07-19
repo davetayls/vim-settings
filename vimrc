@@ -109,9 +109,6 @@ else
   set nonu
 endif
 
-set encoding=utf8
-set fileformat=unix
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -120,6 +117,11 @@ set fileformat=unix
 set nobackup
 set nowb
 set noswapfile
+
+" encodings and formats
+" can use set fileformat=unix if needed
+set encoding=utf8
+set fileformat=unix
 
 " diff current file with it's saved version
 function! s:DiffWithSaved()
