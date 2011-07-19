@@ -1,4 +1,4 @@
-/*jslint laxbreak: true */
+/*jslint laxbreak: true, node: true */
 
 if (typeof require != 'undefined') {
     JSLINT = require('./jslint-core').JSLINT;
