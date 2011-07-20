@@ -1,3 +1,4 @@
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections
 "
@@ -72,6 +73,10 @@ set tm=500
 
 set shellslash                      " use unix path separators
 
+"Remeber open buffers on close
+" set viminfo^=%
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,9 +105,6 @@ else
   set nonu
 endif
 
-set encoding=utf8
-set fileformat=unix
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -111,6 +113,11 @@ set fileformat=unix
 set nobackup
 set nowb
 set noswapfile
+
+" encodings and formats
+" can use set fileformat=unix if needed
+set encoding=utf8
+set fileformat=unix
 
 " diff current file with it's saved version
 function! s:DiffWithSaved()
@@ -262,6 +269,8 @@ map <C-down> <C-W>j
 map <C-up> <C-W>k
 map <C-left> <C-W>h
 map <C-right> <C-W>l
+map <c-h> <C-W>h
+map <c-l> <C-W>l
 
 " move between buffers
 map <leader>bd :Bclose<cr>
@@ -315,9 +324,6 @@ endtry
 "     \   exe "normal! g`\"" |
 "     \ endif
 
-
-"Remeber open buffers on close
-"set viminfo^=%
 
 
 """"""""""""""""""""""""""""""
