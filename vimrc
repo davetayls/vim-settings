@@ -40,15 +40,12 @@ let g:mapleader = ","
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the curors - when moving vertical..
 set so=7
-
 set wildmenu                        "Turn on WiLd menu
-
 set ruler                           "Always show current position
-
 set cmdheight=1                     "The commandbar height
 set showcmd                         "Show incomplete commands in commandbar
-
-" set hid "Change buffer - without saving
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -57,9 +54,7 @@ set cursorline
 
 set ignorecase                      "Ignore case when searching
 set smartcase
-
 set hlsearch                        "Highlight search things
-
 set incsearch                       "Make search act like search in modern browsers
 set nolazyredraw                    "Don't redraw while executing macros 
 
@@ -416,7 +411,7 @@ elseif MySys() == "windows"
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket expanding
+" => Parenthesis/bracket expanding/folding
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
@@ -454,8 +449,8 @@ imap <leader>em <c-r>=00/12<left><left><left><left><left>
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
-" make use of non-useful keys
-map § "
+" stop windows vim mapping <c-a> to select all
+nunmap <C-A>
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -508,10 +503,6 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " entities
-au FileType html iab 7lt &lt;
-au FileType html iab 7gt &gt;
-au FileType html iab 7nb &nbsp;
-au FileType html iab 77 &amp;
 au FileType html imap <s-cr> <br /><cr>
 
 function HtmlEscape()
@@ -613,7 +604,7 @@ noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
 map <leader>q :w<cr>:bd<cr>
-map <leader>w :Bclose<cr>
+map <leader>w :bd<cr>
 map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
@@ -627,6 +618,9 @@ nmap <leader>s :w!<cr>
 imap <leader>s <esc>:w!<cr>
 nmap <leader>sa :wa!<cr>
 
+nmap <cr> i<cr>
+
+" gui options
 if MySys() == "mac"
     if has("gui_running")
       set fuoptions=maxvert,maxhorz
