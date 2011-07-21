@@ -161,7 +161,7 @@ vnoremap <silent> gv :call VisualSelection('gv')<CR>
 " Some useful keys for vimgrep
 command! -nargs=+ DFind execute 'noautocmd vimgrep! <args>' | copen 10
 map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
-map <c-f><c-c> :dFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
+map <c-f><c-c> :DFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
@@ -510,6 +510,7 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""
 " entities
 au FileType html imap <s-cr> <br /><cr>
+au FileType html nmap <cr> i<cr>
 
 function HtmlEscape()
   silent s/\%V&/\&amp;/eg
@@ -624,7 +625,6 @@ nmap <leader>s :w!<cr>
 imap <leader>s <esc>:w!<cr>
 nmap <leader>sa :wa!<cr>
 
-nmap <cr> i<cr>
 
 " gui options
 if MySys() == "mac"
