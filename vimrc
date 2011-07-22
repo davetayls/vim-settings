@@ -455,8 +455,6 @@ imap <leader>em <c-r>=00/12<left><left><left><left><left>
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
-" stop windows vim mapping <c-a> to select all
-nunmap <C-A>
 
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
@@ -469,6 +467,9 @@ if MySys() == "mac"
   nmap <D-k> <M-k>
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
+elseif MySys() == "windows"
+    " stop windows vim mapping <c-a> to select all
+    nunmap <C-A>
 endif
 
 set guitablabel=%t
