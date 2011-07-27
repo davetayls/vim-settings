@@ -411,10 +411,10 @@ if MySys() == "mac"
     cabbrev ff !open -a /Applications/Firefox.app/Contents/MacOS/firefox 'file:///%:p'
 elseif MySys() == "windows"
     cabbrev ff !start c:\Program Files (x86)\Mozilla Firefox\firefox.exe file:///%:p
-    cabbrev ff20 !start D:\Dropbox\programs\firefox\run-firefox20.bat file:///%:p
-    cabbrev ff30 !start D:\Dropbox\programs\firefox\run-firefox30.bat file:///%:p
-    cabbrev ff35 !start D:\Dropbox\programs\firefox\run-firefox35.bat file:///%:p
-    cabbrev ff36 !start D:\Dropbox\programs\firefox\run-firefox36.bat file:///%:p
+    cabbrev ff20 !cd d:\Dropbox\programs\firefox\ && d: && start run-firefox20.bat file:///%:p
+    cabbrev ff30 !start cd d:\Dropbox\programs\firefox\ && run-firefox30.bat file:///%:p
+    cabbrev ff35 !start cd D:\Dropbox\programs\firefox\ && run-firefox35.bat file:///%:p
+    cabbrev ff36 !start cd D:\Dropbox\programs\firefox\ && run-firefox36.bat file:///%:p
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -512,12 +512,12 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""
 " entities
 au FileType html imap <s-cr> <br /><cr>
-au FileType html nmap <cr> i<cr>
+" au FileType html nmap <cr> i<cr>
 
 function HtmlEscape()
-  silent s/\%V&/\&amp;/eg
-  silent s/\%V</\&lt;/eg
-  silent s/\%V>/\&gt;/eg
+  silent %s/\%V&/\&amp;/eg
+  silent %s/\%V</\&lt;/eg
+  silent %s/\%V>/\&gt;/eg
 endfunction
 
 function HtmlUnEscape()
@@ -525,6 +525,8 @@ function HtmlUnEscape()
   silent s/\%V&gt;/>/eg
   silent s/\%V&amp;/\&/eg
 endfunction
+
+command Dhtmlescape call HtmlEscape()
 
 " tags
 au FileType html nmap <leader>, f>i<space>
