@@ -511,7 +511,7 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""
 " entities
 au FileType html imap <s-cr> <br /><cr>
-au FileType html nmap <cr> i<cr>
+" au FileType html nmap <cr> i<cr>
 
 function HtmlEscape()
   silent %s/\%V&/\&amp;/eg
