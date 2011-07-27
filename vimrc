@@ -30,7 +30,7 @@ filetype indent on
 set autoread
 
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
+" like <leader>s saves the current file
 let mapleader = ","
 let g:mapleader = ","
 
@@ -615,7 +615,7 @@ noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
 map <leader>q :w<cr>:bd<cr>
-map <leader>w :bd<cr>
+map <leader>w :Bclose<cr>
 map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
