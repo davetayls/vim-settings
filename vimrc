@@ -408,6 +408,7 @@ endif
 
 " web browsers
 if MySys() == "mac"
+    cabbrev ff !open -a /Applications/Firefox.app/Contents/MacOS/firefox 'file:///%:p'
 elseif MySys() == "windows"
     cabbrev ff !start c:\Program Files (x86)\Mozilla Firefox\firefox.exe file:///%:p
     cabbrev ff20 !start D:\Dropbox\programs\firefox\run-firefox20.bat file:///%:p
