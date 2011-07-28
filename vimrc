@@ -133,10 +133,14 @@ com! DiffSaved call s:DiffWithSaved()
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
-set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set smarttab
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
 set lbr
 set tw=500
@@ -144,6 +148,7 @@ set tw=500
 set ai                              "Auto indent
 set si                              "Smart indent
 set nowrap                          "don't wrap lines
+
 
 
 """"""""""""""""""""""""""""""
@@ -313,8 +318,9 @@ endfunction
 
 " Specify the behavior when switching between buffers 
 try
+  set hidden
   set switchbuf=usetab
-  set stal=2
+  set stal=1
 catch
 endtry
 
@@ -398,7 +404,6 @@ set statusline+=\ %P    "percent through file
 " Open file browser
 if MySys() == "mac"
     nmap <f11> :!open --reveal %:p<CR>
-    nmap <leader>cmd :!open -a /Applications/Utilities/Terminal.app %:p:h<cr>
 elseif MySys() == "windows"
     nmap <leader>cmd :!start cmd %:p:h<cr>
     nmap <F11> :!start explorer /select,%:p<cr>
@@ -573,7 +578,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\~$','\.svn']
 
-nmap <silent> <c-n> :NERDTreeToggle<CR>
+nmap <silent> <c-n> :NERDTreeClose<cr>:NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntf :NERDTreeFind<cr>
 
