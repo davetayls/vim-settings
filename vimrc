@@ -515,6 +515,11 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => html section
 """""""""""""""""""""""""""""""
+" indenting
+let g:html_indent_inctags = "html,body,head,p,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
 " entities
 au FileType html imap <s-cr> <br /><cr>
 " au FileType html nmap <cr> i<cr>
@@ -653,3 +658,14 @@ elseif MySys() == "windows"
 endif
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function DGetToc()
+    let @a = ""
+    normal V$%d
+    execute 'g/=>/y A'
+    let @a = "/*\n    " . expand("%:t") . "\n    =================================" . substitute(@a, "=>", "-", "g") . "\n*/\n"
+    normal ggP
+endfunction
+command! DToc call DGetToc()

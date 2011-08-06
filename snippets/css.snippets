@@ -5,7 +5,7 @@ snippet import
 # comment blocks
 snippet /**
 	/**
-		${1:name}
+		=> ${1:name}
 	--------------------------------------------------*/
 	.${2:$1} ${3}{
 		${4}
@@ -77,6 +77,11 @@ snippet resetlist
 snippet 00 margin and padding
 	margin: 0;
 	padding: 0;
+snippet borderradius
+	-moz-border-radius: $1;
+	-webkit-border-radius: $1;
+	-o-border-radius: $1;
+	border-radius: ${1:x};
 snippet boxshad
 	-moz-box-shadow: ${1:value};
 	-webkit-box-shadow: ${2:$1};
