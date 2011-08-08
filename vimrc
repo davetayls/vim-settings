@@ -1,18 +1,35 @@
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sections
 "
 " - General
-" - Vim user interface
-" - Colours and fonts
+" - VIM user interface
+" - Colors and Fonts
 " - Files, backups and undo
 " - Text, tab and indent related
 " - Visual mode related
 " - Command mode related
 " - Moving around, tabs and buffers
 " - Statusline
+" - Browsing and using external applications
+" - Parenthesis/bracket expanding/folding
+" - General Abbrevs
+" - Calculations
+" - Editing mappings
+" - Cope
+" - Omni complete functions
+" - Spell checking
+" - html section
+" - JavaScript section
 " - Plugins
-" - Misc
+" - Fuf/MRU plugin
+" - NERDTree
+" - Command-T
+" - Syntastic
+" - Zen Coding
+" - Vim grep
+" - MISC
+" - Functions
+"
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -148,7 +165,6 @@ set tw=500
 set ai                              "Auto indent
 set si                              "Smart indent
 set nowrap                          "don't wrap lines
-
 
 
 """"""""""""""""""""""""""""""
@@ -561,6 +577,10 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
+""""""""""""""""""""""""""""""
+" => markdown section
+"""""""""""""""""""""""""""""""
+au FileType mkd set textwidth=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
