@@ -294,7 +294,9 @@ map <c-h> <C-W>h
 map <c-l> <C-W>l
 
 " move between buffers
-map <leader>bd :Bclose<cr>
+map <leader>b :FufBuffer<CR>
+" let g:miniBufExplMapCTabSwitchBufs = 1
+" let g:miniBufExplShowBufNumbers = 0
 nmap <m-left> :bp<cr>
 nmap <m-right> :bn<cr>
 
@@ -578,6 +580,11 @@ function! JavaScriptFold()
 endfunction
 
 """"""""""""""""""""""""""""""
+" => css section
+"""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.less set filetype=less.css
+
+""""""""""""""""""""""""""""""
 " => markdown section
 """""""""""""""""""""""""""""""
 au FileType mkd set textwidth=80
@@ -589,7 +596,7 @@ au FileType mkd set textwidth=80
 let MRU_Max_Entries = 400
 map <leader>ff :FufJumpList<CR>
 map <leader>fm :MRU<CR>
-map <leader>fb :FufBuffer<CR>
+noremap <leader>fb :FufBuffer<CR>
 map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'

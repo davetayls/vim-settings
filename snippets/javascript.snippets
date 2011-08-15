@@ -52,10 +52,10 @@ snippet case
 	${3}
 # for (...) {...}
 snippet for
-	var ln = ${1:Things}.length,
-		${2:i};
-	for ($2 = 0; $2 < ln; $2${3:++}) {
-		${4:$1[$2]}
+	var ln = ${1:Things}.length, ${2:i},
+		${3:itm};
+	for ($2 = 0; $2 < ln; $2${3:+=1}) {
+		itm = ${4:$1[$2]};
 	}
 # for (...) {...} (Improved Native For-Loop)
 snippet forr
@@ -89,7 +89,7 @@ snippet gett
 # Comment Block
 snippet /**
 	/**
-		${1}
+	    => ${1}
 	-------------------------------------------------------*/
 	${2}
 snippet =>
@@ -120,3 +120,10 @@ snippet jslint basic
 	/*global define,require */
 snippet jslint tdd/bdd
 	describe,afterEach,beforeEach,expect,it,waitsFor
+#
+# jasmine
+# --------------------------------------------
+snippet it
+	it("${1}", function() {
+		${2}
+	});
