@@ -127,3 +127,16 @@ snippet it
 	it("${1}", function() {
 		${2}
 	});
+#
+# requirejs
+# --------------------------------------------
+snippet requirejs define
+	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
+	/*global define,require */
+	define([${1:'jquery'}${2:,}], function(${3:$}){
+		'use strict';
+
+		var exports				= {};
+
+		return exports;
+	});

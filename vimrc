@@ -170,8 +170,6 @@ set nowrap                          "don't wrap lines
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
-" NOTICE: Really useful!
-
 "  In visual mode when you press * or # to search for the current selection
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
@@ -282,8 +280,8 @@ map <s-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " moving between tabs
-map <c-j> :tabN<cr>
-map <c-k> :tabn<cr>
+" map <c-j> :tabN<cr>
+" map <c-k> :tabn<cr>
 
 " move between windows
 map <C-down> <C-W>j
@@ -337,18 +335,10 @@ endfunction
 " Specify the behavior when switching between buffers 
 try
   set hidden
-  set switchbuf=usetab
-  set stal=1
+  set switchbuf=usetab      " Like useopen, but also consider windows in other tab pages.
+  set stal=1                " only show tab bar if there are 2 or more tabs
 catch
 endtry
-
-" Return to last edit position (You want this!) *N*
-"autocmd BufReadPost *
-"     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"     \   exe "normal! g`\"" |
-"     \ endif
-
-
 
 """"""""""""""""""""""""""""""
 " => Statusline
@@ -401,7 +391,7 @@ function! GitBranch()
 endfunction
 
 "statusline setup
-set statusline=%t       "tail of the filename
+set statusline=%#string#%f%*       "tail of the filename
 call AddStatuslineFlag('&ff', 'unix')    "fileformat
 call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
 " set statusline+=%{GitBranch()} " git branch
@@ -567,6 +557,7 @@ au FileType javascript setl fen
 au FileType javascript setl nocindent
 
 au FileType javascript nmap <leader>, $i,<cr>
+au BufNewFile,BufRead *.json set filetype=javascript
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
@@ -594,6 +585,7 @@ au FileType mkd set textwidth=80
 """"""""""""""""""""""""""""""
 " => Fuf/MRU plugin
 let MRU_Max_Entries = 400
+let MRU_Use_Current_Window = 1
 map <leader>ff :FufJumpList<CR>
 map <leader>fm :MRU<CR>
 noremap <leader>fb :FufBuffer<CR>
@@ -610,7 +602,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\~$','\.svn']
 
-nmap <silent> <c-n> :NERDTreeClose<cr>:NERDTreeToggle<CR>
+nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntf :NERDTreeFind<cr>
 
