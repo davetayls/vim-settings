@@ -89,7 +89,7 @@ snippet gett
 # Comment Block
 snippet /**
 	/**
-	    => ${1}
+	    ${1}
 	-------------------------------------------------------*/
 	${2}
 snippet =>
@@ -97,27 +97,38 @@ snippet =>
 #
 # jQuery
 # --------------------------------------------
-snippet jqueryplg jquery plugin template
-	/*!
-	 * jquery.${1:name}
-	 * 
-	 * Dual licensed under the MIT and GPL licenses.
-	 * http://docs.jquery.com/License
-	*/	
-	(function($) {
-		"use strict";
+snippet jquery jquery plugin template
+	/**
+		jQuery.${1:name} v0.1
+		Dave Taylor http://the-taylors.org
 
-		$.fn.${2:$1} = function(){
-			${3}
+		@license The MIT License (MIT)
+		@preserve Copyright (c) <2011> <Dave Taylor http://the-taylors.org>
+	*/
+	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
+	/*global define,require */
+	(function($){
+		'use strict';
+
+		var /** @const */ DEFAULT_SETTINGS    = {};
+
+		$.fn.$1 = function(options) {
+			var settings = $.extend({}, DEFAULT_SETTINGS, options);
+			return this.each(function(){
+			    ${2}
+			});
 		};
 
-	}(jQuery));
+	}(window.jQuery));
 #
 # misc
 # --------------------------------------------
 snippet jslint basic
 	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
 	/*global define,require */
+snippet jslint nodejs
+	/*jslint node: true, vars: true, white: true, forin: true, indent: 4, nomen: true, sloppy: true */
+	/*global define,require,__dirname,module */
 snippet jslint tdd/bdd
 	describe,afterEach,beforeEach,expect,it,waitsFor
 #

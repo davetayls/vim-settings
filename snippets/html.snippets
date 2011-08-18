@@ -384,7 +384,7 @@ snippet rpartial render partial
 # -------------------------------------------------
 snippet jquery google code cdn
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
-snippet jqtabs
+snippet jqui tabs
 	<div class="nav-tabs">
 		<ul class="nav-tabs-nav">
 			${1}
@@ -392,3 +392,17 @@ snippet jqtabs
 		<div id="${2}" class="nav-tab">
 		</div>
 	</div>
+# -------------------------------------------------
+# Open Graph
+# -------------------------------------------------
+snippet opengraph headers basic
+	<meta property="og:title"       content="${1}" />
+	<meta property="og:type"        content="${2}" />
+	<meta property="og:url"         content="${3}" />
+	<meta property="og:image"       content="${4}" />
+	<meta property="og:site_name"   content="${5}" />
+	<meta property="og:description" content="${6}" />
+snippet opengraph facebook admins
+	<meta property="fb:admins"      content="${6:753920161}" />
+snippet opengraph facebook app_id
+	<meta property="fb:app_id"      content="${6}" />

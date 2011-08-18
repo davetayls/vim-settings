@@ -79,6 +79,7 @@ set nolazyredraw                    "Don't redraw while executing macros
 set magic                           "Set magic on, for regular expressions
 
 set showmatch                       "Show matching bracets when text indicator is over them
+set matchpairs+=<:>                 " highlight closing backet for tags
 set mat=2                           "How many tenths of a second to blink
 
 " No sound on errors
@@ -524,12 +525,13 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " indenting
-let g:html_indent_inctags = "html,body,head,p,tbody"
+let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " entities
 au FileType html imap <s-cr> <br /><cr>
+au FileType html nmap =% f><left>V%=
 " au FileType html nmap <cr> i<cr>
 
 function HtmlEscape()
@@ -545,6 +547,7 @@ function HtmlUnEscape()
 endfunction
 
 command Dhtmlescape call HtmlEscape()
+command Dhtmlunescape call HtmlUnEscape()
 
 " tags
 au FileType html nmap <leader>, f>i<space>
@@ -576,8 +579,9 @@ endfunction
 au BufNewFile,BufRead *.less set filetype=less.css
 
 """"""""""""""""""""""""""""""
-" => markdown section
+" => text based section
 """""""""""""""""""""""""""""""
+" au BufNewFile,BufRead *.txt set filetype=mkd
 au FileType mkd set textwidth=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -608,7 +612,7 @@ nmap <leader>ntf :NERDTreeFind<cr>
 
 " => Command-T
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll
+set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,node_modules/**
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
