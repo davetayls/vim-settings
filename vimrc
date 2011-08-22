@@ -555,7 +555,7 @@ au FileType html nmap <leader>, f>i<space>
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-"au FileType javascript call JavaScriptFold()
+au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -564,7 +564,7 @@ au BufNewFile,BufRead *.json set filetype=javascript
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
-    setl foldlevelstart=1
+    setl foldlevelstart=4
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
     function! FoldText()
