@@ -92,6 +92,11 @@ snippet resetlist
 	padding: 0;
 # misc
 # ------------------------------------
+snippet -webkit generic vendor prefixes
+	-webkit-${1:name}: ${2:value};
+	   -moz-$1: $2;
+	     -o-$1: $2;
+	        $1: $2;
 snippet 00 margin and padding
 	margin: 0;
 	padding: 0;
