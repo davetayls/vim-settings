@@ -281,8 +281,6 @@ map <s-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " moving between tabs
-" map <c-j> :tabN<cr>
-" map <c-k> :tabn<cr>
 
 " move between windows
 map <C-down> <C-W>j
@@ -291,6 +289,8 @@ map <C-left> <C-W>h
 map <C-right> <C-W>l
 map <c-h> <C-W>h
 map <c-l> <C-W>l
+map <c-j> <c-w>j
+map <c-k> <c-w>k
 
 " move between buffers
 map <leader>b :FufBuffer<CR>
@@ -525,7 +525,7 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " indenting
-let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer"
+let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
