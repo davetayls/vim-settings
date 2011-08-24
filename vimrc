@@ -304,7 +304,7 @@ map <leader>ba :1,300 bd!<cr>
 
 
 " Tab configuration
-map <leader>tn :tabnew!<cr>:NERDTreeMirror<CR>
+map <leader>tn :tabnew!<cr>:NERDTree<CR>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -533,6 +533,7 @@ let g:html_indent_style1 = "inc"
 au FileType html imap <s-cr> <br /><cr>
 au FileType html nmap =% f><left>V%=
 " au FileType html nmap <cr> i<cr>
+au FileType html vmap <c-k> c<a href="none"><esc>pa</a>
 
 function HtmlEscape()
   silent %s/\%V&/\&amp;/eg
