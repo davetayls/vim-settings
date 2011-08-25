@@ -525,7 +525,7 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " indenting
-let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside"
+let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside,video"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 

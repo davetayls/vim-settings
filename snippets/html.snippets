@@ -393,6 +393,30 @@ snippet jqui tabs
 		</div>
 	</div>
 # -------------------------------------------------
+# AddThis
+# -------------------------------------------------
+snippet addthis config with all options
+	<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=${1:davetayls}"></script>
+	<script type="text/javascript">
+		var addthis_config = {
+			username : "$1",
+			ui_click: true                    // only show extra sharing links on click
+			data_ga_tracker: '${2:UA-4421586-2}'  // enable google analytics tracking
+		,   data_track_clickback: false       // stop addthis appending tracking to your sharelink
+		,   data_track_addressbar: false      // stop addthis appending tracking to your addressbar
+		};
+	</script>
+snippet addthis default style wrapper
+	<div class="addthis_toolbox addthis_default_style ">
+		${1}
+	</div>
+snippet addthis common count buttons
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	<a tw:via="${1:davetayls}" tw:text="${2:I like this}" class="addthis_button_tweet"></a>
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	<a class="addthis_counter addthis_pill_style"></a>
+# -------------------------------------------------
 # Open Graph
 # -------------------------------------------------
 snippet opengraph headers basic
