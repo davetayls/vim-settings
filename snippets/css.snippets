@@ -44,6 +44,7 @@ snippet inlinebb
 	*display: inline;
 	*zoom: 1;
 snippet vishid
+	/* visually hidden */
 	position:absolute;
 	display: block; 
 	top: auto; 
@@ -56,6 +57,8 @@ snippet bold
 	font-weight: bold;
 snippet em
 	font-size: ${1}em;
+snippet upper
+	text-transform: uppercase;
 snippet uppercase
 	text-transform: uppercase;
 #
@@ -111,9 +114,9 @@ snippet boxshad
 	-o-box-shadow: ${3:$1};
 	box-shadow: ${4:$1};
 snippet opacity
-	opacity: 0.${1:name};
-	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=${2:$1}0);
-	filter: alpha(opacity=${3:$1}0);
+	opacity: 0.${1:};
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=${1}0);
+	filter: alpha(opacity=${1}0);
 snippet z z-index
 	z-index: ${1};${2}
 #

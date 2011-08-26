@@ -304,7 +304,7 @@ map <leader>ba :1,300 bd!<cr>
 
 
 " Tab configuration
-map <leader>tn :tabnew!<cr>:NERDTreeMirror<CR>
+map <leader>tn :tabnew!<cr>:NERDTree<CR>
 map <leader>te :tabedit 
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
@@ -525,7 +525,7 @@ map <leader>s? z=
 " => html section
 """""""""""""""""""""""""""""""
 " indenting
-let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside"
+let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside,video"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
@@ -533,6 +533,7 @@ let g:html_indent_style1 = "inc"
 au FileType html imap <s-cr> <br /><cr>
 au FileType html nmap =% f><left>V%=
 " au FileType html nmap <cr> i<cr>
+au FileType html vmap <c-k> c<a href="none"><esc>pa</a>
 
 function HtmlEscape()
   silent %s/\%V&/\&amp;/eg
@@ -555,7 +556,7 @@ au FileType html nmap <leader>, f>i<space>
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-"au FileType javascript call JavaScriptFold()
+au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -564,7 +565,7 @@ au BufNewFile,BufRead *.json set filetype=javascript
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
-    setl foldlevelstart=1
+    setl foldlevelstart=4
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
     function! FoldText()
