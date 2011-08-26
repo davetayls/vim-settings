@@ -625,8 +625,8 @@ set statusline+=%*
 let g:syntastic_enable_signs=1
 " let g:syntastic_auto_loc_list=1
 " let g:syntastic_quiet_warnings=1
-
 run SyntasticEnable html
+
 " => Zen Coding
 " let g:user_zen_leader_key = '<c-y>'
 imap <leader><tab> <c-y>,

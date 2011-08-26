@@ -393,6 +393,32 @@ snippet jqui tabs
 		</div>
 	</div>
 # -------------------------------------------------
+# component markup
+# -------------------------------------------------
+snippet map jquery.maps
+	<div id="${1:}" class="map">
+		<h2 class="maps-title">Map Details: <a href="#$1-skip">skip</a></h2>
+		<div class="geo">
+			Location Name: 
+			<span class="latitude">${2}</span>, 
+			<span class="longitude">${3}</span>.
+			Zoom: <span class="zoom">${4}</span>
+		</div>
+		<div class="maps-container">
+			<div class="maps-container-loading"></div>
+		</div>
+		<ul class="maps-pins">
+			${5}
+		</ul>
+		<div id="$1-skip"></div>
+	</div>
+snippet mappin
+	<li>
+		<div class="geo">Location Name: <span class="latitude">${1}</span>, <span class="longitude">${2}</span>.</div>
+		<a target="_blank" class="maps-pinLink" href="http://maps.google.co.uk/maps?q=$1,$2">View this pin on a map</a>
+	</li>
+
+# -------------------------------------------------
 # Open Graph
 # -------------------------------------------------
 snippet opengraph headers basic
