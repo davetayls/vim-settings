@@ -562,6 +562,7 @@ au FileType javascript setl nocindent
 
 au FileType javascript nmap <leader>, $i,<cr>
 au BufNewFile,BufRead *.json set filetype=javascript
+au FileType javascript nmap =% f{V%=
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
@@ -693,3 +694,6 @@ function DGetToc()
     normal ggP
 endfunction
 command! DToc call DGetToc()
+
+command! DScrollBind set scrollbind
+command! DScrollUnBind set noscrollbind
