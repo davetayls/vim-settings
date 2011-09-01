@@ -68,6 +68,7 @@ set guioptions-=r  "remove right-hand scroll bar
 " Set backspace config
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l              "Allow these left/right keys to move the cursor across lines
+set iskeyword+=-                    "Specify - as part of a word
 set cursorline
 
 set ignorecase                      "Ignore case when searching
@@ -562,6 +563,7 @@ au FileType javascript setl nocindent
 
 au FileType javascript nmap <leader>, $i,<cr>
 au BufNewFile,BufRead *.json set filetype=javascript
+au FileType javascript nmap =% f{V%=
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
@@ -693,3 +695,6 @@ function DGetToc()
     normal ggP
 endfunction
 command! DToc call DGetToc()
+
+command! DScrollBind set scrollbind
+command! DScrollUnBind set noscrollbind
