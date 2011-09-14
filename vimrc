@@ -180,7 +180,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
 " Some useful keys for vimgrep
-command! -nargs=+ DFind execute 'noautocmd vimgrep! <args>' | copen 10
+command! -nargs=+ DFind execute 'noautocmd lvimgrep! <args>' | lopen 10
 map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
 map <c-f><c-c> :DFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
 
@@ -521,6 +521,11 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+""""""""""""""""""""""""""""""
+" => xml section
+"""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.build set filetype=xml
 
 """"""""""""""""""""""""""""""
 " => html section
