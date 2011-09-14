@@ -144,32 +144,12 @@ snippet it
 snippet requirejs define
 	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
 	/*global define,require */
-	define([${1:'jquery/core'}${2:,}], function(${3:$}){
+	define(function(require){
 		'use strict';
 
-		var exports				= {};
-
-		return exports;
+		return {
+		};
 	});
-snippet requirejs define dependencies
-	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
-	/*global define,require */
-	(function(){
-		'use strict';
-
-		var dependencies = [
-				${1:'jquery/core'}
-			]
-		;
-		define(dependencies, 
-		function(${2:$}){
-
-			var exports				= {};
-
-			return exports;
-		});
-
-	}());
 snippet requirejs require
 	require(['${1:}'], function(${2}){
 	});
