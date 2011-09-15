@@ -74,9 +74,9 @@ snippet do
 	} while (${1:/* condition */});
 # Object Method
 snippet :f
-	${1:method_name}: function(${2:attribute}) {
-		${4}
-	}${3:,}
+	,   ${1:method_name}: function(${2:attribute}) {
+		    ${4}
+	    }
 # setTimeout function
 snippet timeout
 	setTimeout(function() {${3}}${2}, ${1:10};
@@ -105,7 +105,7 @@ snippet jquery jquery plugin template
 		@license The MIT License (MIT)
 		@preserve Copyright (c) <2011> <Dave Taylor http://the-taylors.org>
 	*/
-	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
+	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define,require */
 	(function($){
 		'use strict';
@@ -144,32 +144,12 @@ snippet it
 snippet requirejs define
 	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
 	/*global define,require */
-	define([${1:'jquery/core'}${2:,}], function(${3:$}){
+	define(function(require){
 		'use strict';
 
-		var exports				= {};
-
-		return exports;
+		return {
+		};
 	});
-snippet requirejs define dependencies
-	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
-	/*global define,require */
-	(function(){
-		'use strict';
-
-		var dependencies = [
-				${1:'jquery/core'}
-			]
-		;
-		define(dependencies, 
-		function(${2:$}){
-
-			var exports				= {};
-
-			return exports;
-		});
-
-	}());
 snippet requirejs require
 	require(['${1:}'], function(${2}){
 	});
