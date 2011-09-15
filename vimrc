@@ -584,8 +584,8 @@ au BufNewFile,BufRead *.less set filetype=less.css
 """"""""""""""""""""""""""""""
 " => text based section
 """""""""""""""""""""""""""""""
-" au BufNewFile,BufRead *.txt set filetype=mkd
-au FileType mkd set textwidth=80
+au BufNewFile,BufRead *.txt setlocal filetype=mkd
+au FileType mkd setlocal textwidth=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -634,6 +634,10 @@ run SyntasticEnable html
 " let g:user_zen_leader_key = '<c-y>'
 imap <leader><tab> <c-y>,
 vmap <leader><tab> <c-y>,
+
+" => Vim Gist
+let g:gist_detect_filetype = 1
+let g:github_user =davetayls
 
 """"""""""""""""""""""""""""""
 " => Vim grep
