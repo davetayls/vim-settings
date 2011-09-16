@@ -64,6 +64,8 @@ set cmdheight=1                     "The commandbar height
 set showcmd                         "Show incomplete commands in commandbar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
+set winminwidth=10 
+set winminheight=10 
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -525,7 +527,7 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => xml section
 """""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.build set filetype=xml
+au BufNewFile,BufRead *.build set filetype=nant.xml
 
 """"""""""""""""""""""""""""""
 " => html section
