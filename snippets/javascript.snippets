@@ -142,12 +142,14 @@ snippet it
 # requirejs
 # --------------------------------------------
 snippet requirejs define
-	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
-	/*global define,require */
+	/*jslint browser: true, vars: true, white: true, forin: true */
+	/*global define, require */
 	define(function(require){
 		'use strict';
 
 		return {
+			init: function(){
+			}
 		};
 	});
 snippet requirejs require
