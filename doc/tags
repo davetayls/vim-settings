@@ -68,6 +68,7 @@
 :FufTag	fuf.txt	/*:FufTag*
 :FufTagWithCursorWord	fuf.txt	/*:FufTagWithCursorWord*
 :FufTaggedFile	fuf.txt	/*:FufTaggedFile*
+:Gist	gist-vim.txt	/*:Gist*
 :MatchDebug	matchit.txt	/*:MatchDebug*
 :NERDTree	NERD_tree.txt	/*:NERDTree*
 :NERDTreeClose	NERD_tree.txt	/*:NERDTreeClose*
@@ -97,6 +98,7 @@
 ExtractSnips()	snipMate.txt	/*ExtractSnips()*
 ExtractSnipsFile()	snipMate.txt	/*ExtractSnipsFile()*
 Filename()	snipMate.txt	/*Filename()*
+Gist.vim	gist-vim.txt	/*Gist.vim*
 MatchError	matchit.txt	/*MatchError*
 NERDTree	NERD_tree.txt	/*NERDTree*
 NERDTree-?	NERD_tree.txt	/*NERDTree-?*
@@ -424,6 +426,11 @@ g:tcommentMapLeaderOp2	tcomment.txt	/*g:tcommentMapLeaderOp2*
 g:tcommentOpModeExtra	tcomment.txt	/*g:tcommentOpModeExtra*
 g:tcommentOptions	tcomment.txt	/*g:tcommentOptions*
 g:tcommentSyntaxMap	tcomment.txt	/*g:tcommentSyntaxMap*
+gist-vim-install	gist-vim.txt	/*gist-vim-install*
+gist-vim-license	gist-vim.txt	/*gist-vim-license*
+gist-vim-requirements	gist-vim.txt	/*gist-vim-requirements*
+gist-vim-tips	gist-vim.txt	/*gist-vim-tips*
+gist-vim-usage	gist-vim.txt	/*gist-vim-usage*
 i_CTRL-G_S	surround.txt	/*i_CTRL-G_S*
 i_CTRL-G_s	surround.txt	/*i_CTRL-G_s*
 i_CTRL-R_<Tab>	snipMate.txt	/*i_CTRL-R_<Tab>*
