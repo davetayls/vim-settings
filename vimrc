@@ -1,23 +1,35 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections
 "
 " - General
 " - VIM user interface
 " - Colors and Fonts
-" - mappings
 " - Files, backups and undo
+" - Text, tab and indent related
+" - Visual mode related
 " - Command mode related
+" - Moving around, tabs and buffers
 " - Statusline
 " - Browsing and using external applications
+" - Parenthesis/bracket expanding/folding
 " - General Abbrevs
+" - Calculations
+" - Editing mappings
+" - Cope
+" - Omni complete functions
 " - Spell checking
-" - xml section
 " - html section
 " - JavaScript section
-" - css section
-" - text based section
 " - Plugins
-" - gui options
+" - Fuf/MRU plugin
+" - NERDTree
+" - Command-T
+" - Syntastic
+" - Zen Coding
+" - Vim grep
+" - MISC
 " - Functions
+"
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -38,6 +50,8 @@ set autoread
 " like <leader>s saves the current file
 let mapleader = ","
 let g:mapleader = ","
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -80,32 +94,8 @@ set tm=500
 
 set shellslash                      " use unix path separators
 
-set expandtab
-set tabstop=4
-set softtabstop=4
-set smarttab
-set autoindent    " always set autoindenting on
-set copyindent    " copy the previous indentation on autoindenting
-set number        " always show line numbers
-set shiftwidth=4  " number of spaces to use for autoindenting
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-
-set lbr
-set tw=500
-
-set ai                              "Auto indent
-set si                              "Smart indent
-set nowrap                          "don't wrap lines
-
-set guitablabel=%t
-
-" Specify the behavior when switching between buffers 
-try
-  set hidden
-  set switchbuf=usetab      " Like useopen, but also consider windows in other tab pages.
-  set stal=1                " only show tab bar if there are 2 or more tabs
-catch
-endtry
+"Remeber open buffers on close
+" set viminfo^=%
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -136,133 +126,6 @@ else
   set nonu
 endif
 
-""""""""""""""""""""""""""""""
-" => mappings
-""""""""""""""""""""""""""""""
-
-"  In visual mode when you press * or # to search for the current selection
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
-
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
-map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
-map <c-f><c-c> :DFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
-" Smart mappings on the command line
-cno $h e ~/
-cno $d c <C-\>eCurrentFileDir("e")<cr>
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
-
-" $q is super useful when browsing on the command line
-cno $q <C-\>eDeleteTillSlash()<cr>
-
-" Bash like keys for the command line
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
-cnoremap <C-K>		<C-U>
-
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
-"Useful when moving accross long lines
-map j gj
-map k gk
-
-" Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
-map <s-space> ?
-
-" move between windows
-map <C-down> <C-W>j
-map <C-up> <C-W>k
-map <C-left> <C-W>h
-map <C-right> <C-W>l
-map <c-h> <C-W>h
-map <c-l> <C-W>l
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-
-" move between buffers
-map <leader>bb :FufBuffer<CR>
-" Close all the buffers
-map <leader>ba :1,300 bd!<cr>
-
-" Open a new tab
-noremap <c-t> :tabnew!<cr>:NERDTree<CR>
-
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
-
-" Map auto complete of {}
-inoremap $4 {<esc>o}<esc>O
-inoremap '+ ' +  + '<left><left><left><left>
-
-"Remap VIM home/end keys
-map 0 ^
-map 4 $
-
-"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if MySys() == "mac"
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-elseif MySys() == "windows"
-    " stop windows vim mapping <c-a> to select all
-    nunmap <C-A>
-endif
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>cc :cw<cr>
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
-
-" Omni complete
-inoremap <c-space> <C-x><C-o>
-" file path complete
-inoremap <a-space> <C-x><C-f>
-" line complete
-inoremap <c-l> <C-x><C-l>
-
-map <leader>ff :FufJumpList<CR>
-map <leader>fm :MRU<CR>
-noremap <leader>fb :FufBuffer<CR>
-map <leader>fl :FufLine<CR>
-
-nmap <silent> <c-n> :NERDTreeToggle<CR>
-nmap <leader>nt :NERDTree<CR>
-nmap <leader>ntf :NERDTreeFind<cr>
-
-noremap <leader>y :CommandTFlush<cr>
-
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
-
-map <leader>w :Bclose<cr>
-map <leader>ls :ls<cr>
-map <leader>pp :setlocal paste!<cr>
-
-" quick navigation
-map <leader>cb :cd ..<cr>
-map <leader>cs :cd ~/Sites<cr>
-map <leader>cp :cd c:/projects<cr>
-
-" Fast saving
-nmap <leader>s :w!<cr>
-imap <leader>s <esc>:w!<cr>
-nmap <leader>sa :wa!<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -287,10 +150,48 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set expandtab
+set tabstop=4
+set softtabstop=4
+set smarttab
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+
+set lbr
+set tw=500
+
+set ai                              "Auto indent
+set si                              "Smart indent
+set nowrap                          "don't wrap lines
+
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+"  In visual mode when you press * or # to search for the current selection
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+" When you press gv you vimgrep after the selected text
+vnoremap <silent> gv :call VisualSelection('gv')<CR>
+
 " Some useful keys for vimgrep
 command! -nargs=+ DFind execute 'noautocmd lvimgrep! <args>' | lopen 10
+map <c-f> :DFind //gj **/*.*<left><left><left><left><left><left><left><left><left><left>
+map <c-f><c-c> :DFind // **/*.css<left><left><left><left><left><left><left><left><left><left>
 
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+
+"
 " From an idea by Michael Naumann
+" 
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -318,9 +219,31 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Smart mappings on the command line
+cno $h e ~/
+cno $d c <C-\>eCurrentFileDir("e")<cr>
+cno $j e ./
+cno $c e <C-\>eCurrentFileDir("e")<cr>
+
+" $q is super useful when browsing on the command line
+cno $q <C-\>eDeleteTillSlash()<cr>
+
+" Bash like keys for the command line
+cnoremap <C-A>		<Home>
+cnoremap <C-E>		<End>
+cnoremap <C-K>		<C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
+" Useful 
+
 func! Cwd()
   let cwd = getcwd()
   return "e " . cwd 
@@ -347,6 +270,43 @@ func! CurrentFileDir(cmd)
   return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Useful when moving accross long lines
+map j gj
+map k gk
+
+" Map space to / (search) and c-space to ? (backgwards search)
+map <space> /
+map <s-space> ?
+map <silent> <leader><cr> :noh<cr>
+
+" moving between tabs
+
+" move between windows
+map <C-down> <C-W>j
+map <C-up> <C-W>k
+map <C-left> <C-W>h
+map <C-right> <C-W>l
+map <c-h> <C-W>h
+map <c-l> <C-W>l
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+
+" move between buffers
+map <leader>bb :FufBuffer<CR>
+nmap <m-left> :bp<cr>
+nmap <m-right> :bn<cr>
+
+" Close all the buffers
+map <leader>ba :1,300 bd!<cr>
+
+" Open a new tab
+noremap <c-t> :tabnew!<cr>:NERDTree<CR>
+
+
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
    let l:currentBufNum = bufnr("%")
@@ -366,6 +326,14 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+" Specify the behavior when switching between buffers 
+try
+  set hidden
+  set switchbuf=usetab      " Like useopen, but also consider windows in other tab pages.
+  set stal=1                " only show tab bar if there are 2 or more tabs
+catch
+endtry
 
 """"""""""""""""""""""""""""""
 " => Statusline
@@ -432,6 +400,7 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Browsing and using external applications
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -457,10 +426,82 @@ elseif MySys() == "windows"
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Parenthesis/bracket expanding/folding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+vnoremap $q <esc>`>a'<esc>`<i'<esc>
+vnoremap $e <esc>`>a"<esc>`<i"<esc>
+
+" Map auto complete of (, ", ', [
+inoremap $1 ()<esc>i
+inoremap $2 []<esc>i
+inoremap $3 {}<left>
+inoremap $4 {<esc>o}<esc>O
+inoremap $q ''<esc>i
+inoremap $e ""<esc>i
+inoremap '+ ' +  + '<left><left><left><left>
+inoremap §= ' +  + '<left><left><left><left>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General Abbrevs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iab xdatet <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
+" iab xlg <c-r>=strftime("%Y-%m-%d %H:%M")<cr><space><space>DT<space>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Calculations
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" em calculations
+imap <leader>em <c-r>=00/12<left><left><left><left><left>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Remap VIM home/end keys
+map 0 ^
+map 4 $
+
+"Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if MySys() == "mac"
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+elseif MySys() == "windows"
+    " stop windows vim mapping <c-a> to select all
+    nunmap <C-A>
+endif
+
+set guitablabel=%t
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Cope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Do :help cope if you are unsure what cope is. It's super useful!
+map <leader>cc :cw<cr>
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Omni complete functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+inoremap <c-space> <C-x><C-o>
+inoremap <a-space> <C-x><C-f>
+inoremap <c-l> <C-x><C-l>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -482,10 +523,6 @@ au BufNewFile,BufRead *.build set filetype=nant.xml
 """"""""""""""""""""""""""""""
 " => html section
 """""""""""""""""""""""""""""""
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" tags
-au FileType html nmap <leader>, f>i<space>
-
 " indenting
 let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside,video"
 let g:html_indent_script1 = "inc"
@@ -512,11 +549,12 @@ endfunction
 command Dhtmlescape call HtmlEscape()
 command Dhtmlunescape call HtmlUnEscape()
 
+" tags
+au FileType html nmap <leader>, f>i<space>
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
@@ -540,7 +578,6 @@ endfunction
 " => css section
 """""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.less set filetype=less.css
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 """"""""""""""""""""""""""""""
 " => text based section
@@ -551,14 +588,18 @@ au FileType mkd setlocal textwidth=80
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""
-" Fuf/MRU plugin
+" => Fuf/MRU plugin
 let MRU_Max_Entries = 400
 let MRU_Use_Current_Window = 1
+map <leader>ff :FufJumpList<CR>
+map <leader>fm :MRU<CR>
+noremap <leader>fb :FufBuffer<CR>
+map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'
 let g:fuf_autoPreview = 1
 
-" NERDTree
+" => NERDTree
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
@@ -566,37 +607,77 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\~$','\.svn']
 
-" Command-T
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+nmap <leader>nt :NERDTree<CR>
+nmap <leader>ntf :NERDTreeFind<cr>
+
+" => Command-T
 let g:CommandTMaxHeight = 15
 set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,node_modules/**
+noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
-
-" Syntastic
+"let g:CommandTMatchWindowAtTop = 1
+" => Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_warnings=1
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_quiet_warnings=1
 run SyntasticEnable html
 
-" Zen Coding
+" => Zen Coding
 " let g:user_zen_leader_key = '<c-y>'
 imap <leader><tab> <c-y>,
 vmap <leader><tab> <c-y>,
 
-" Vim Gist
+" => Vim Gist
 let g:gist_detect_filetype = 1
+let g:github_user =davetayls
 
-" Vim grep
+" => VimCalc 
+let g:VCalc_Win_Size = 5
+let g:VCalc_WindowPosition = 'bottom'
+
+
+""""""""""""""""""""""""""""""
+" => Vim grep
+""""""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 set grepprg=/bin/grep\ -nH
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => gui options
+" => MISC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>mm mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
+
+map <leader>q :w<cr>:bd<cr>
+map <leader>w :Bclose<cr>
+map <leader>ls :ls<cr>
+map <leader>pp :setlocal paste!<cr>
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
+" quick navigation
+map <leader>cb :cd ..<cr>
+map <leader>cs :cd ~/Sites<cr>
+map <leader>cp :cd c:/projects<cr>
+
+
+" Fast saving
+nmap <leader>s :w!<cr>
+imap <leader>s <esc>:w!<cr>
+nmap <leader>sa :wa!<cr>
+
+
+" gui options
 if MySys() == "mac"
     if has("gui_running")
       set fuoptions=maxvert,maxhorz
@@ -613,6 +694,7 @@ elseif MySys() == "windows"
 	au GUIEnter * :cd c:/projects
 endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -625,3 +707,8 @@ function DGetToc()
 endfunction
 command! DToc call DGetToc()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Blogging
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
+cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>
