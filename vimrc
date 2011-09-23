@@ -296,24 +296,15 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 
 " move between buffers
-map <leader>b :FufBuffer<CR>
-" let g:miniBufExplMapCTabSwitchBufs = 1
-" let g:miniBufExplShowBufNumbers = 0
+map <leader>bb :FufBuffer<CR>
 nmap <m-left> :bp<cr>
 nmap <m-right> :bn<cr>
 
 " Close all the buffers
 map <leader>ba :1,300 bd!<cr>
 
-
-" Tab configuration
-map <leader>tn :tabnew!<cr>:NERDTree<CR>
-map <leader>te :tabedit 
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-
-" When pressing <leader>cd switch to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>
+" Open a new tab
+noremap <c-t> :tabnew!<cr>:NERDTree<CR>
 
 
 command! Bclose call <SID>BufcloseCloseIt()
@@ -646,6 +637,11 @@ vmap <leader><tab> <c-y>,
 let g:gist_detect_filetype = 1
 let g:github_user =davetayls
 
+" => VimCalc 
+let g:VCalc_Win_Size = 5
+let g:VCalc_WindowPosition = 'bottom'
+
+
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
@@ -666,10 +662,14 @@ map <leader>w :Bclose<cr>
 map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
 " quick navigation
-map <leader>bb :cd ..<cr>
+map <leader>cb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
 map <leader>cp :cd c:/projects<cr>
+
 
 " Fast saving
 nmap <leader>s :w!<cr>
@@ -707,5 +707,8 @@ function DGetToc()
 endfunction
 command! DToc call DGetToc()
 
-command! DScrollBind set scrollbind
-command! DScrollUnBind set noscrollbind
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Blogging
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
+cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>
