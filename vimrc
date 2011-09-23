@@ -633,7 +633,6 @@ vmap <leader><tab> <c-y>,
 
 " => Vim Gist
 let g:gist_detect_filetype = 1
-let g:github_user =davetayls
 
 " => VimCalc 
 let g:VCalc_Win_Size = 5
