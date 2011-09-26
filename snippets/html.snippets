@@ -220,6 +220,44 @@ snippet htmlpage
 			<h1>${2:$1}</h1>
 		</body>
 	</html>
+snippet emailpage
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>${1:}</title>
+	<style type="text/css">
+		table td {border-collapse:collapse;}
+		/* Body text color for the New Yahoo.  This example sets the font of Yahoo's Shortcuts to black. */
+		.yshortcuts, .yshortcuts a, .yshortcuts a:link,.yshortcuts a:visited, .yshortcuts a:hover, .yshortcuts a span 
+		{ color: #cccccc; text-decoration: none !important; border-bottom: none !important; background-color: none !important;} 
+	
+		img 		 {border:0;}
+		a            {border:0; outline:0; color:#c11e1c; text-decoration:none;}
+		a:hover      {text-decoration:underline;}
+		a:visited    {color:#c11e1c;}
+	</style>
+	</head><body style="background-color: #000000; font-family: Arial, Helvetica, Verdana, Sans-Serif; margin:0; padding: 0;">
+	<table style="background-color: #000000; margin: 0; padding:0; width: 100%;  text-align:center;" align="center" border="0" cellpadding="0" cellspacing="0">
+		<tbody>
+		<tr>
+			<td style="margin: 0; padding: 0; vertical-align: top; text-align:center; width:100%;" valign="top" align="center">
+				<!-- wrapper table -->
+				<table style="margin-left:auto; margin-right:auto; padding: 0;" width="600" align="center" border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+					<tr>
+						<td valign="top" align="center" width="600">
+							${2:maincontent}
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<!-- END wrapper table -->
+			</td>
+		</tr>
+	</tbody></table>
+	<!-- End of wrapper table -->
+	</body></html>
 snippet zm zoom hasLayout
 	zoom: 1;${1}
 # -------------------------------------------------
