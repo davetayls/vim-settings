@@ -149,7 +149,11 @@ snippet it
 snippet requirejs define
 	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define, require */
-	define(function(require){
+	define(
+	[
+	    'jquery/core'
+	],
+	function($){
 		'use strict';
 
 		return {
