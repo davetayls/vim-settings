@@ -73,6 +73,11 @@ snippet do
 		${2:/* code */}
 	} while (${1:/* condition */});
 # Object Method
+snippet },f
+	},   
+	${1:method_name}: function(${2:attribute}) {
+		${4}
+	}
 snippet :f
 	,   ${1:method_name}: function(${2:attribute}) {
 		    ${4}
@@ -124,10 +129,10 @@ snippet jquery jquery plugin template
 # misc
 # --------------------------------------------
 snippet jslint basic
-	/*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
+	/*jslint browser: true, vars: true, white: true, forin: true, nomen: true */
 	/*global define,require */
 snippet jslint nodejs
-	/*jslint node: true, vars: true, white: true, forin: true, indent: 4, nomen: true, sloppy: true */
+	/*jslint node: true, vars: true, white: true, forin: true, nomen: true, sloppy: true */
 	/*global define,require,__dirname,module */
 snippet jslint tdd/bdd
 	describe,afterEach,beforeEach,expect,it,waitsFor
@@ -144,7 +149,11 @@ snippet it
 snippet requirejs define
 	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define, require */
-	define(function(require){
+	define(
+	[
+	    'jquery/core'
+	],
+	function($){
 		'use strict';
 
 		return {

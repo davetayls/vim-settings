@@ -12,7 +12,7 @@ let g:colors_name = "bespin"
 
 hi Cursor  guifg=NONE guibg=#a7a7a7 gui=NONE
 hi Visual  guifg=NONE guibg=#4c4a49 gui=NONE
-hi CursorLine  guifg=NONE guibg=#2e2823 gui=NONE
+hi CursorLine  guifg=NONE guibg=#1a1a1a gui=NONE
 hi CursorColumn  guifg=NONE guibg=#2e2823 gui=NONE
 hi LineNr  guifg=#71685d guibg=#28211c gui=NONE
 hi VertSplit  guifg=#000000 guibg=#000000 gui=NONE
