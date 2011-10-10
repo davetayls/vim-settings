@@ -103,7 +103,7 @@ syntax enable                       "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
-  set gfn=Consolas:h14
+  set gfn=Monaco:h12
   set shell=/bin/bash
 elseif MySys() == "windows"
   set gfn=Consolas:h11
@@ -161,10 +161,9 @@ set number        " always show line numbers
 set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
-set lbr
-set tw=500
+set textwidth=0
 
-set ai                              "Auto indent
+set autoindent                      "Auto indent
 set si                              "Smart indent
 set nowrap                          "don't wrap lines
 
@@ -580,8 +579,15 @@ au BufNewFile,BufRead *.less set filetype=less.css
 """"""""""""""""""""""""""""""
 " => text based section
 """""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.txt setlocal filetype=mkd
-au FileType mkd setlocal textwidth=80
+map <leader>tw :setlocal textwidth=80
+autocmd BufRead *\.txt set filetype=mkd
+autocmd BufEnter *\.txt,*\.mkd setlocal textwidth=80
+autocmd BufRead *\.txt,*\.mkd setlocal formatoptions=l
+autocmd BufRead *\.txt,*\.mkd setlocal linebreak
+autocmd BufRead *\.txt,*\.mkd setlocal wrap
+autocmd BufRead *\.txt,*\.mkd setlocal smartindent
+autocmd BufRead *\.txt,*\.mkd setlocal spell spelllang=en_gb
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -703,6 +709,21 @@ function DGetToc()
     normal ggP
 endfunction
 command! DToc call DGetToc()
+
+let g:DSizeToggleCols=9999
+function DSizeToggle()
+    if g:DSizeToggleCols == 130
+    	set lines=999
+        set columns=9999
+        let g:DSizeToggleCols=9999
+    else
+    	set lines=50
+        set columns=130
+        let g:DSizeToggleCols=130
+    endif
+endfunction
+command! DSize call DSizeToggle()
+map <f3> :DSize<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Blogging
