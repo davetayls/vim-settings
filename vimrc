@@ -581,13 +581,6 @@ au BufNewFile,BufRead *.less set filetype=less.css
 """""""""""""""""""""""""""""""
 map <leader>tw :setlocal textwidth=80
 autocmd BufRead *\.txt set filetype=mkd
-autocmd BufEnter *\.txt,*\.mkd setlocal textwidth=80
-autocmd BufRead *\.txt,*\.mkd setlocal formatoptions=l
-autocmd BufRead *\.txt,*\.mkd setlocal linebreak
-autocmd BufRead *\.txt,*\.mkd setlocal wrap
-autocmd BufRead *\.txt,*\.mkd setlocal smartindent
-autocmd BufRead *\.txt,*\.mkd setlocal spell spelllang=en_gb
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -688,8 +681,8 @@ if MySys() == "mac"
     endif
 endif
 " maximise the window to fit the screen
-au GUIEnter * set columns=9999
-au GUIEnter * set lines=999
+au GUIEnter * set columns=400
+au GUIEnter * set lines=100
 
 if MySys() == "mac"
 	au GUIEnter * :cd ~/Sites
@@ -713,8 +706,8 @@ command! DToc call DGetToc()
 let g:DSizeToggleCols=9999
 function DSizeToggle()
     if g:DSizeToggleCols == 130
-    	set lines=999
-        set columns=9999
+    	set lines=100
+        set columns=400
         let g:DSizeToggleCols=9999
     else
     	set lines=50
@@ -726,7 +719,10 @@ command! DSize call DSizeToggle()
 map <f3> :DSize<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Blogging
+" => Blogging and notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if MySys() == "mac"
+	helptags /Users/davetayls/Dropbox/notes/
+endif
 cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
 cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>

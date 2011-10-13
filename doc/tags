@@ -99,6 +99,8 @@ ExtractSnips()	snipMate.txt	/*ExtractSnips()*
 ExtractSnipsFile()	snipMate.txt	/*ExtractSnipsFile()*
 Filename()	snipMate.txt	/*Filename()*
 Gist.vim	gist-vim.txt	/*Gist.vim*
+LargeFile-copyright	LargeFile.txt	/*LargeFile-copyright*
+LargeFile.txt	LargeFile.txt	/*LargeFile.txt*
 MatchError	matchit.txt	/*MatchError*
 NERDTree	NERD_tree.txt	/*NERDTree*
 NERDTree-?	NERD_tree.txt	/*NERDTree-?*
@@ -443,6 +445,8 @@ l9-installation	l9.txt	/*l9-installation*
 l9-introduction	l9.txt	/*l9-introduction*
 l9-usage	l9.txt	/*l9-usage*
 l9.txt	l9.txt	/*l9.txt*
+largefile	LargeFile.txt	/*largefile*
+largefile-history	LargeFile.txt	/*largefile-history*
 list-snippets	snipMate.txt	/*list-snippets*
 matchit	matchit.txt	/*matchit*
 matchit-%	matchit.txt	/*matchit-%*

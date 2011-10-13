@@ -56,10 +56,10 @@ function!PreviewMarkdown()
     let file_header = ['<html>', '<head>',
         \ '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">',
         \ '<title>' . expand("%:t:r") . '</title>',
-        \ '<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">',
-        \ '<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css">',
-        \ '<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css">',
-        \ '<style>body{padding:20px;}div#container{background-color:#F2F2F2;padding:0 20px;margin:0px;border:solid #D0D0D0 1px;}</style>',
+        \ '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        \ '<style>body{padding:20px;font-family:arial,sans-serif;}div#container{background-color:#F2F2F2;padding:0 20px;margin:0px;border:solid #D0D0D0 1px;}blockquote p{color:#555;font-style:italic;}</style>',
+        \ '<style media="screen and (max-width:480px)">body{padding:0;div#container{padding:0 8px;}</style>',
+        \ '<style media="print">body{padding:0;}div#container{background-color:#fff;padding:0;margin:0px;border:none;}</style>',
         \ '</head>', '<body>', '<div id="container">']
     call writefile(file_header, output_name)
 
