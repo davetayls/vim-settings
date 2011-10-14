@@ -1,5 +1,5 @@
 setlocal textwidth=80
-setlocal formatoptions=tcan1
+setlocal formatoptions=ltn1
 setlocal linebreak
 setlocal wrap
 setlocal smartindent

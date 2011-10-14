@@ -69,6 +69,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l              "Allow these left/right keys to move the cursor across lines
 set iskeyword+=-                    "Specify - as part of a word
+" set formatlistpat="^\s*((\d+)|(-))[:.}\t ]\s*\S"
 set cursorline
 
 set ignorecase                      "Ignore case when searching
