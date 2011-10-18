@@ -4,3 +4,6 @@ setlocal linebreak
 setlocal wrap
 setlocal smartindent
 setlocal spell spelllang=en_gb
+
+iabbrev esther Esther
+iabbrev i I

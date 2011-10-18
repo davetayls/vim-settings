@@ -454,7 +454,7 @@ iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
 " => Calculations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " em calculations
-imap <leader>em <c-r>=00/12<left><left><left><left><left>
+imap <leader>em <c-r>=.0/12<left><left><left><left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
