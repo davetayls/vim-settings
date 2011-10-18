@@ -71,6 +71,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l              "Allow these left/right keys to move the cursor across lines
 set iskeyword+=-                    "Specify - as part of a word
+" set formatlistpat="^\s*((\d+)|(-))[:.}\t ]\s*\S"
 set cursorline
 
 set ignorecase                      "Ignore case when searching
@@ -105,7 +106,7 @@ syntax enable                       "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
-  set gfn=Consolas:h14
+  set gfn=Monaco:h12
   set shell=/bin/bash
 elseif MySys() == "windows"
   set gfn=Consolas:h11
@@ -163,10 +164,9 @@ set number        " always show line numbers
 set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
-set lbr
-set tw=500
+set textwidth=0
 
-set ai                              "Auto indent
+set autoindent                      "Auto indent
 set si                              "Smart indent
 set nowrap                          "don't wrap lines
 
@@ -582,8 +582,8 @@ au BufNewFile,BufRead *.less set filetype=less.css
 """"""""""""""""""""""""""""""
 " => text based section
 """""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.txt setlocal filetype=mkd
-au FileType mkd setlocal textwidth=80
+map <leader>tw :setlocal textwidth=80
+autocmd BufRead *\.txt set filetype=mkd
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -684,8 +684,8 @@ if MySys() == "mac"
     endif
 endif
 " maximise the window to fit the screen
-au GUIEnter * set columns=9999
-au GUIEnter * set lines=999
+au GUIEnter * set columns=400
+au GUIEnter * set lines=100
 
 if MySys() == "mac"
 	au GUIEnter * :cd ~/Sites
@@ -706,8 +706,26 @@ function DGetToc()
 endfunction
 command! DToc call DGetToc()
 
+let g:DSizeToggleCols=9999
+function DSizeToggle()
+    if g:DSizeToggleCols == 130
+    	set lines=100
+        set columns=400
+        let g:DSizeToggleCols=9999
+    else
+    	set lines=50
+        set columns=130
+        let g:DSizeToggleCols=130
+    endif
+endfunction
+command! DSize call DSizeToggle()
+map <f3> :DSize<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Blogging
+" => Blogging and notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if MySys() == "mac"
+	helptags /Users/davetayls/Dropbox/notes/
+endif
 cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
 cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>
