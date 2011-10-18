@@ -36,6 +36,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -671,6 +673,7 @@ map <leader>cp :cd c:/projects<cr>
 " Fast saving
 nmap <leader>s :w!<cr>
 imap <leader>s <esc>:w!<cr>
+imap <c-s> <esc>:w!<cr>
 nmap <leader>sa :wa!<cr>
 
 

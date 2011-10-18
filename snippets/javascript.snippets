@@ -136,6 +136,71 @@ snippet jslint nodejs
 	/*global define,require,__dirname,module */
 snippet jslint tdd/bdd
 	describe,afterEach,beforeEach,expect,it,waitsFor
+
+snippet jslintopt adsafe	true if ADsafe rules should be enforced. See http://www.ADsafe.org/.
+	adsafe: false
+snippet jslintopt bitwise	true if bitwise operators should be allowed. (more)
+	bitwise: true
+snippet jslintopt browser	true if the standard browser globals should be predefined. (more)
+	browser: true
+snippet jslintopt cap	true if uppercase HTML should be allowed.
+	cap: true
+snippet jslintopt confusion	true if variables and properties are allowed to contain more than one type of value.
+	confusion: true
+snippet jslintopt continue	true if the continue statement should be allowed.
+	continue: true
+snippet jslintopt css	true if CSS workarounds should be tolerated. (more)
+	css: true
+snippet jslintopt debug	true if debugger statements should be allowed. Set this option to false before going into production.
+	debug: true
+snippet jslintopt devel	true if browser globals that are useful in development should be predefined. (more)
+	devel: true
+snippet jslintopt eqeq	true if the == and != operators should be tolerated. (more).
+	eqeq: true
+snippet jslintopt es5	true if ES5 syntax should be allowed. It is likely that programs using this option will produce syntax errors on ES3 systems.
+	es5: true
+snippet jslintopt evil	true if eval should be allowed. (more)
+	evil: true
+snippet jslintopt forin	true if unfiltered for in statements should be allowed. (more)
+	forin: true
+snippet jslintopt fragment	true if HTML fragments should be allowed. (more)
+	fragment: true
+snippet jslintopt indent	The number of spaces used for indentation (default is 4).
+	indent: 4
+snippet jslintopt maxlen	The maximum number of characters in a line.
+	maxlen: 150
+snippet jslintopt newcap	true if Initial Caps with constructor functions is optional. (more)
+	newcap: true
+snippet jslintopt node	true if Node.js globals should be predefined. (more)
+	node: true
+snippet jslintopt nomen	true if names should not be checked for initial or trailing underbars.
+	nomen: true
+snippet jslintopt on	true if HTML event handlers should be allowed. (more)
+	on: true
+snippet jslintopt passfail	true if the scan should stop on first error.
+	passfail: true
+snippet jslintopt plusplus	true if ++ and -- should be allowed. (more)
+	plusplus: true
+snippet jslintopt regexp	true if . and [^...] should be allowed in RegExp literals. They match more material than might be expected, allowing attackers to confuse applications. These forms should not be used when validating in secure applications.
+	regexp: true
+snippet jslintopt rhino	true if the Rhino environment globals should be predefined. (more)
+	rhino: true
+snippet jslintopt safe	true if the safe subset rules are enforced. These rules are used by ADsafe. It enforces the safe subset rules but not the widget structure rules.
+	safe: true
+snippet jslintopt sloppy	true if the ES5 'use strict'; pragma is not required. Do not use this pragma unless you know what you are doing.
+	sloppy: true
+snippet jslintopt sub	true if subscript notation may be used for expressions better expressed in dot notation.
+	sub: true
+snippet jslintopt undef	true if variables and functions need not be declared before used. (more)
+	undef: true
+snippet jslintopt unparam	true if warnings should not be given for unused parameters.
+	unparam: true
+snippet jslintopt vars	true if multiple var statement per function should be allowed. (more)
+	vars: true
+snippet jslintopt white	true if strict whitespace rules should be ignored.
+	white: true
+snippet jslintopt windows	true if the Windows globals should be predefined. (more)
+	windows: true
 #
 # jasmine
 # --------------------------------------------
@@ -146,7 +211,7 @@ snippet it
 #
 # requirejs
 # --------------------------------------------
-snippet requirejs define
+snippet define general
 	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define, require */
 	define(
@@ -161,6 +226,41 @@ snippet requirejs define
 			}
 		};
 	});
-snippet requirejs require
+snippet define jquery/core
+	/**
+	* main jQuery module
+	*/
+	/*jslint browser: true, vars: true, white: true, forin: true */
+	/*global define, require */
+	define([], function(){
+		'use strict';
+		return window.jQuery;
+	});
+snippet require require
 	require(['${1:}'], function(${2}){
+	});
+snippet require main
+	/**
+	* Main
+	* ====
+	* This is the main js initialiser for the page
+	* it is triggered by the data-main attribute on the
+	* require script tag.
+	* <script data-main="/js/main" src="/lib/require.js"></script>
+	* for more information see <http://requirejs.org>
+	*/
+	/*jslint browser: true, vars: true, white: true, forin: true */
+	/*global define,require */
+	require(
+	{ 
+		paths: { 
+			jquery: '../lib/jquery-core',
+			lib: '../lib', 
+			'jquery-plugin': '../lib/jquery-plugins' 
+		} 
+	}, 
+	[ 'jquery/core'], 
+	function($) {
+		'use strict';
+
 	});
