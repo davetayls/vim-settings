@@ -211,7 +211,7 @@ snippet it
 #
 # requirejs
 # --------------------------------------------
-snippet requirejs define
+snippet define general
 	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define, require */
 	define(
@@ -226,6 +226,41 @@ snippet requirejs define
 			}
 		};
 	});
-snippet requirejs require
+snippet define jquery/core
+	/**
+	* main jQuery module
+	*/
+	/*jslint browser: true, vars: true, white: true, forin: true */
+	/*global define, require */
+	define([], function(){
+		'use strict';
+		return window.jQuery;
+	});
+snippet require require
 	require(['${1:}'], function(${2}){
+	});
+snippet require main
+	/**
+	* Main
+	* ====
+	* This is the main js initialiser for the page
+	* it is triggered by the data-main attribute on the
+	* require script tag.
+	* <script data-main="/js/main" src="/lib/require.js"></script>
+	* for more information see <http://requirejs.org>
+	*/
+	/*jslint browser: true, vars: true, white: true, forin: true */
+	/*global define,require */
+	require(
+	{ 
+		paths: { 
+			jquery: '../lib/jquery-core',
+			lib: '../lib', 
+			'jquery-plugin': '../lib/jquery-plugins' 
+		} 
+	}, 
+	[ 'jquery/core'], 
+	function($) {
+		'use strict';
+
 	});
