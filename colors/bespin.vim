@@ -89,6 +89,7 @@ hi javaScriptThis  guifg=#ec9d0c guibg=NONE gui=bold
 hi javaScriptFunction  guifg=#f9ee98 guibg=NONE gui=NONE
 hi javaScriptRailsFunction  guifg=#dad085 guibg=NONE gui=NONE
 hi javaScriptBraces  guifg=NONE guibg=NONE gui=NONE
+hi jQueryInstance guifg=#decfbd guibg=NONE gui=NONE
 hi yamlKey  guifg=#5ea6ea guibg=NONE gui=NONE
 hi yamlAnchor  guifg=#7587a6 guibg=NONE gui=NONE
 hi yamlAlias  guifg=#7587a6 guibg=NONE gui=NONE

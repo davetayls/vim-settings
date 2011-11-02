@@ -103,7 +103,6 @@ set shellslash                      " use unix path separators
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                       "Enable syntax hl
-syn match Label /this/ containedin=ALL
 
 " Set font according to system
 if MySys() == "mac"
