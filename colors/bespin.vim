@@ -85,6 +85,7 @@ hi htmlEndTag  guifg=#ac885b guibg=NONE gui=NONE
 hi htmlTagName  guifg=#ac885b guibg=NONE gui=NONE
 hi htmlArg  guifg=#ac885b guibg=NONE gui=NONE
 hi htmlSpecialChar  guifg=#cf6a4c guibg=NONE gui=NONE
+hi javaScriptThis  guifg=#ec9d0c guibg=NONE gui=bold
 hi javaScriptFunction  guifg=#f9ee98 guibg=NONE gui=NONE
 hi javaScriptRailsFunction  guifg=#dad085 guibg=NONE gui=NONE
 hi javaScriptBraces  guifg=NONE guibg=NONE gui=NONE

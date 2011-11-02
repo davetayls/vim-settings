@@ -217,7 +217,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptParensErrC           Error
   HiLink javaScriptOperator             Operator
   HiLink javaScriptType                 Type
-  HiLink javaScriptThis                 Type
+  HiLink javaScriptThis                 javaScriptThis
   HiLink javaScriptNull                 Type
   HiLink javaScriptNumber               Number
   HiLink javaScriptFloat                Number
