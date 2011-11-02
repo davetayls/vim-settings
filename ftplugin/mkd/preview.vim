@@ -57,7 +57,8 @@ function!PreviewMarkdown()
         \ '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">',
         \ '<title>' . expand("%:t:r") . '</title>',
         \ '<meta name="viewport" content="width=device-width,initial-scale=1">',
-        \ '<style>body{padding:20px;font-family:arial,sans-serif;}div#container{background-color:#F2F2F2;padding:0 20px;margin:0px;border:solid #D0D0D0 1px;}blockquote p{color:#555;font-style:italic;}</style>',
+        \ '<style>body{text-align:justify;color:#333;padding:20px;font-family:georgia,serif;line-height:1.4;}div#container{max-width:700px;background-color:#F2F2F2;padding:0 20px;margin:0px;border:solid #D0D0D0 1px;}blockquote p{color:#555;font-style:italic;}</style>',
+        \ '<style>h1,h2{color:#111;font-family:arial,sans-serif}</style>',
         \ '<style media="screen and (max-width:480px)">body{padding:0;div#container{padding:0 8px;}</style>',
         \ '<style media="print">body{padding:0;}div#container{background-color:#fff;padding:0;margin:0px;border:none;}</style>',
         \ '</head>', '<body>', '<div id="container">']
