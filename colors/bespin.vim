@@ -48,7 +48,7 @@ hi Special  guifg=#baae9e guibg=NONE gui=NONE
 hi SpecialKey  guifg=#5e5955 guibg=#2e2823 gui=NONE
 hi Statement  guifg=#5ea6ea guibg=NONE gui=NONE
 hi StorageClass  guifg=#f9ee98 guibg=NONE gui=NONE
-hi String  guifg=#54be0d guibg=NONE gui=NONE
+hi String  guifg=#cf6a4c guibg=NONE gui=NONE
 hi Tag  guifg=#5ea6ea guibg=NONE gui=NONE
 hi Title  guifg=#baae9e guibg=NONE gui=bold
 hi Todo  guifg=#666666 guibg=NONE gui=inverse,bold,italic
@@ -89,7 +89,7 @@ hi javaScriptThis  guifg=#ec9d0c guibg=NONE gui=bold
 hi javaScriptFunction  guifg=#f9ee98 guibg=NONE gui=NONE
 hi javaScriptRailsFunction  guifg=#dad085 guibg=NONE gui=NONE
 hi javaScriptBraces  guifg=NONE guibg=NONE gui=NONE
-hi jQueryInstance guifg=#e3d3c1 guibg=NONE gui=NONE
+hi jQueryInstance guifg=#f9ee98 guibg=NONE gui=NONE
 hi yamlKey  guifg=#5ea6ea guibg=NONE gui=NONE
 hi yamlAnchor  guifg=#7587a6 guibg=NONE gui=NONE
 hi yamlAlias  guifg=#7587a6 guibg=NONE gui=NONE
