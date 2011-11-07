@@ -555,7 +555,7 @@ au FileType html nmap <leader>, f>i<space>
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
+" au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
 
@@ -582,8 +582,7 @@ au BufNewFile,BufRead *.less set filetype=less.css
 """"""""""""""""""""""""""""""
 " => text based section
 """""""""""""""""""""""""""""""
-map <leader>tw :setlocal textwidth=80
-autocmd BufRead *\.txt set filetype=mkd
+map <f4> :set filetype=mkd
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -717,6 +716,7 @@ function DSizeToggle()
     	set lines=50
         set columns=130
         let g:DSizeToggleCols=130
+        winpos 255 859
     endif
 endfunction
 command! DSize call DSizeToggle()
