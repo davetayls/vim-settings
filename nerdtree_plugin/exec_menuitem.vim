@@ -18,13 +18,7 @@ let g:loaded_nerdtree_exec_menuitem = 1
 call NERDTreeAddMenuItem({
             \ 'text': '(!)Execute file',
             \ 'shortcut': '!',
-            \ 'callback': 'NERDTreeExecFile',
-            \ 'isActiveCallback': 'NERDTreeExecFileActive' })
-
-function! NERDTreeExecFileActive()
-    let node = g:NERDTreeFileNode.GetSelected()
-    return !node.path.isDirectory && node.path.isExecutable
-endfunction
+            \ 'callback': 'NERDTreeExecFile'})
 
 function! NERDTreeExecFile()
     let treenode = g:NERDTreeFileNode.GetSelected()
