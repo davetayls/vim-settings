@@ -583,6 +583,7 @@ au BufNewFile,BufRead *.less set filetype=less.css
 " => text based section
 """""""""""""""""""""""""""""""
 map <f4> :set filetype=mkd
+autocmd BufNewFile,BufRead *.mustache set filetype=mustache
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
