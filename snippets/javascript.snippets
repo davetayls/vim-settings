@@ -6,8 +6,7 @@ snippet proto
 	};
 # Function
 snippet fn
-	${1:var }${2:function_name} = function(${3:argument}) {
-		${4:// body...}
+	var ${1:function_name} = function(${2:argument}) {
 	};
 # Function
 snippet fun
@@ -75,12 +74,10 @@ snippet do
 # Object Method
 snippet },f
 	},   
-	${1:method_name}: function(${2:attribute}) {
-		${4}
+	${1:method_name}: function(${2}) {
 	}
 snippet :f
-	,   ${1:method_name}: function(${2:attribute}) {
-		    ${4}
+	,   ${1:method_name}: function(${2}) {
 	    }
 # setTimeout function
 snippet timeout
@@ -125,6 +122,14 @@ snippet jquery jquery plugin template
 		};
 
 	}(window.jQuery));
+snippet $. class selector
+	$('.${1}')${2}
+snippet $f. find class
+	$${1}.find('.${2}')${3}
+snippet $# id selector
+	$('#${1}')${2}
+snippet $f# find id
+	$${1}.find('#${2}')${3}
 #
 # misc
 # --------------------------------------------
@@ -238,6 +243,13 @@ snippet define jquery/core
 	});
 snippet require require
 	require(['${1:}'], function(${2}){
+	});
+snippet require require spaced
+	require(
+	[
+		${1}
+	], 
+	function(${2}){
 	});
 snippet require main
 	/**
