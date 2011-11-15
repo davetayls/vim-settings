@@ -9,6 +9,22 @@ if exists("g:loaded_nerdtree_git_menuitems")
 endif
 let g:loaded_nerdtree_git_menuitems = 1
 
+" GIT Status
+call NERDTreeAddMenuItem({
+            \ 'text': '(s) Git Status',
+            \ 'shortcut': 's',
+            \ 'callback': 'NERDTreeGitStatus'})
+
+function! NERDTreeGitStatus()
+    let treenode = g:NERDTreeFileNode.GetSelected()
+    let cmd = "\"cd " . treenode.path.str() . " && git status\""
+    if cmd != ''
+        exec ':!' . cmd
+    else
+        echo "Aborted"
+    endif
+endfunction
+
 " GIT PULL
 call NERDTreeAddMenuItem({
             \ 'text': '(p) Git Pull',
@@ -25,6 +41,26 @@ function! NERDTreeGitPull()
     endif
 endfunction
 
+" GIT Push
+call NERDTreeAddMenuItem({
+            \ 'text': '(p) Git Push',
+            \ 'shortcut': 'p',
+            \ 'callback': 'NERDTreeGitPush'})
+
+function! NERDTreeGitPush()
+    let treenode = g:NERDTreeFileNode.GetSelected()
+    echo "==========================================================\n"
+    echo "Complete the command to execute (add arguments etc):\n"
+    let cmd = "cd " . treenode.path.str() . " && git push"
+    let cmd = input(':!', cmd . ' ')
+    
+    if cmd != ''
+        exec ':! "' . cmd . "\""
+    else
+        echo "Aborted"
+    endif
+endfunction
+
 " GIT Commit
 call NERDTreeAddMenuItem({
             \ 'text': '(C) Git Commit',
@@ -36,26 +72,6 @@ function! NERDTreeGitCommit()
     echo "==========================================================\n"
     echo "Complete the command to execute (add arguments etc):\n"
     let cmd = "cd " . treenode.path.str() . " && git commit -am"
-    let cmd = input(':!', cmd . ' ')
-    
-    if cmd != ''
-        exec ':! "' . cmd . "\""
-    else
-        echo "Aborted"
-    endif
-endfunction
-
-" GIT Push
-call NERDTreeAddMenuItem({
-            \ 'text': '(P) Git Push',
-            \ 'shortcut': 'P',
-            \ 'callback': 'NERDTreeGitPush'})
-
-function! NERDTreeGitPush()
-    let treenode = g:NERDTreeFileNode.GetSelected()
-    echo "==========================================================\n"
-    echo "Complete the command to execute (add arguments etc):\n"
-    let cmd = "cd " . treenode.path.str() . " && git push"
     let cmd = input(':!', cmd . ' ')
     
     if cmd != ''
