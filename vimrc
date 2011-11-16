@@ -610,6 +610,7 @@ let g:NERDTreeIgnore=['\~$','\.svn']
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntf :NERDTreeFind<cr>
+nmap <leader>vs :vs<cr>:e ~/<cr>
 
 " => Command-T
 let g:CommandTMaxHeight = 15
@@ -668,7 +669,6 @@ map <leader>cd :cd %:p:h<cr>
 map <leader>cb :cd ..<cr>
 map <leader>cs :cd ~/Sites<cr>
 map <leader>cp :cd c:/projects<cr>
-
 
 " Fast saving
 nmap <leader>s :w!<cr>
