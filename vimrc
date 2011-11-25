@@ -465,6 +465,10 @@ imap <leader>em <c-r>=.0/12<left><left><left><left><left>
 map 0 ^
 map 4 $
 
+"Dont yank deleted line in visual line paste
+vmap p p:let @"=@0<cr>
+vmap P P:let @"=@0<cr>
+
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z

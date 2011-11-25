@@ -11,16 +11,14 @@ snippet proto
 	function(${3:first_argument}) {
 		${4:// body...}
 	};
-# Function
+# Functions
 snippet fn
 	var ${1:function_name} = function(${2:argument}) {
 	};
-# Function
 snippet fun
 	function ${1:function_name}(${2:argument}) {
 		${3:// body...}
 	}
-# Anonymous Function 
 snippet f last argument function
 	function(${1}){
 		${2}
@@ -80,11 +78,11 @@ snippet do
 	} while (${1:/* condition */});
 # Object Method
 snippet },f
-	},   
+	},
 	${1:method_name}: function(${2}) {
 	}
-snippet },f,
-	},   
+snippet },ff
+	},
 	${1:method_name}: function(${2}) {
 	},
 snippet :f
@@ -141,6 +139,9 @@ snippet $# id selector
 	$('#${1}')${2}
 snippet $f# find id
 	$${1}.find('#${2}')${3}
+snippet del delegate
+	delegate('${1:a}', '${2:click}', function(e){
+	});
 #
 # misc
 # --------------------------------------------
@@ -224,6 +225,8 @@ snippet it
 	it("${1}", function() {
 		${2}
 	});
+snippet expect
+	expect(${1})${2};
 #
 # requirejs
 # --------------------------------------------
