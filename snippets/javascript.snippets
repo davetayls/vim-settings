@@ -227,6 +227,14 @@ snippet it
 	});
 snippet expect
 	expect(${1})${2};
+snippet waitsFor
+	waitsFor(function(){
+		${1}
+	}, '${2}', 1000);
+snippet runs
+	runs(function(){
+		${1}
+	});
 #
 # requirejs
 # --------------------------------------------
