@@ -208,7 +208,7 @@ function! VisualSelection(direction) range
     if a:direction == 'b'
         execute "normal ?" . l:pattern . "^M"
     elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+        call CmdLine("DFind " . '/'. l:pattern . '/gj' . ' **/*.*')
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
@@ -296,7 +296,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 
 " move between buffers
-map <leader>bb :FufBuffer<CR>
 nmap <m-left> :bp<cr>
 nmap <m-right> :bn<cr>
 
@@ -465,6 +464,10 @@ imap <leader>em <c-r>=.0/12<left><left><left><left><left>
 map 0 ^
 map 4 $
 
+"Dont yank deleted line in visual line paste
+vmap p p:let @"=@0<cr>
+vmap P P:let @"=@0<cr>
+
 "Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -598,6 +601,8 @@ map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'
 let g:fuf_autoPreview = 1
+let g:fuf_previewHeight = 4
+let g:fuf_buffer_mruOrder = 1
 
 " => NERDTree
 let g:NERDTreeChDirMode=2
