@@ -521,7 +521,7 @@ map <leader>s? z=
 """"""""""""""""""""""""""""""
 " => xml section
 """""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.build set filetype=nant.xml
+au BufNewFile,BufRead *.build set filetype=xml.nant
 
 """"""""""""""""""""""""""""""
 " => html section
@@ -597,6 +597,7 @@ let MRU_Use_Current_Window = 1
 map <leader>ff :FufJumpList<CR>
 map <leader>fm :MRU<CR>
 noremap <leader>fb :FufBuffer<CR>
+map <leader>ls :FufBuffer<cr>
 map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'
@@ -664,7 +665,6 @@ noremap <Leader>ml mmHmt:s/<cr>//g<cr>'tzt'm
 
 map <leader>q :w<cr>:bd<cr>
 map <leader>w :Bclose<cr>
-map <leader>ls :ls<cr>
 map <leader>pp :setlocal paste!<cr>
 
 " When pressing <leader>cd switch to the directory of the open buffer
