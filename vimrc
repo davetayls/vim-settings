@@ -385,7 +385,7 @@ function! GitBranch()
 endfunction
 
 "statusline setup
-set statusline=%#string#%f%*       "tail of the filename
+set statusline=%#CPath#%F%*       "tail of the filename
 call AddStatuslineFlag('&ff', 'unix')    "fileformat
 call AddStatuslineFlag('&fenc', 'utf-8') "file encoding
 " set statusline+=%{GitBranch()} " git branch
@@ -526,6 +526,8 @@ au BufNewFile,BufRead *.build set filetype=xml.nant
 """"""""""""""""""""""""""""""
 " => html section
 """""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.html set filetype=html.javascript.css
+autocmd BufNewFile,BufRead *.htm set filetype=html.javascript.css
 " indenting
 let g:html_indent_inctags = "html,body,head,p,tbody,li,header,footer,section,article,figure,aside,video"
 let g:html_indent_script1 = "inc"
@@ -595,13 +597,13 @@ autocmd BufNewFile,BufRead *.mustache set filetype=mustache
 let MRU_Max_Entries = 400
 let MRU_Use_Current_Window = 1
 map <leader>ff :FufCoverageFile<CR>
-map <leader>fm :MRU<CR><space>
+map <leader>fm :MRU<CR>
 noremap <leader>fb :FufBuffer<CR>
 map <leader>ls :FufBuffer<cr>
 map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'
-let g:fuf_autoPreview = 1
+let g:fuf_autoPreview = 0
 let g:fuf_previewHeight = 4
 let g:fuf_buffer_mruOrder = 1
 
@@ -609,9 +611,9 @@ let g:fuf_buffer_mruOrder = 1
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
-let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=0
 let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=['\~$','\.svn']
+let g:NERDTreeIgnore=['\~$','\.svn', '.DS_Store']
 
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>

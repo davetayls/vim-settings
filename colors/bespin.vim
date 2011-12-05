@@ -10,6 +10,8 @@ endif
 
 let g:colors_name = "bespin"
 
+
+hi Normal  guifg=#baae9e guibg=#382e27 gui=NONE 
 hi Cursor  guifg=NONE guibg=#a7a7a7 gui=NONE
 hi Visual  guifg=NONE guibg=#4c4a49 gui=NONE
 hi CursorLine  guifg=NONE guibg=#1a1a1a gui=NONE
@@ -25,8 +27,8 @@ hi IncSearch  guifg=NONE guibg=#41434a gui=NONE
 hi Search  guifg=NONE guibg=#41434a gui=NONE
 hi Directory  guifg=#cf6a4c guibg=NONE gui=NONE
 hi Folded  guifg=#666666 guibg=#28211c gui=NONE
+hi CPath  guifg=#54be0d guibg=#222222 gui=NONE 
 
-hi Normal  guifg=#baae9e guibg=#382e27 gui=NONE
 hi Boolean  guifg=#cf6a4c guibg=NONE gui=NONE
 hi Character  guifg=#cf6a4c guibg=NONE gui=NONE
 hi Comment  guifg=#666666 guibg=NONE gui=italic
