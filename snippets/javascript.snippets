@@ -263,6 +263,14 @@ snippet define jquery/core
 		'use strict';
 		return window.jQuery;
 	});
+snippet define return Object
+	if (window.define && window.define.amd) {
+		define(function(){
+			return ${1};
+		});
+	} else {
+		window.$1 = $1;
+	}
 snippet require require
 	require(['${1:}'], function(${2}){
 	});
