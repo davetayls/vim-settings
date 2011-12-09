@@ -484,6 +484,8 @@ elseif MySys() == "windows"
     nunmap <C-A>
 endif
 
+nmap <c-e> :enew<cr>i
+
 set guitablabel=%t
 
 
@@ -611,18 +613,18 @@ let g:fuf_buffer_mruOrder = 1
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
-let g:NERDTreeShowBookmarks=0
+let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\~$','\.svn', '.DS_Store']
 
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
 nmap <leader>ntf :NERDTreeFind<cr>
-nmap <leader>vs :vs<cr>:e ~/<cr>
+nmap <leader>vs :vs<cr>:e %:p:h<cr>
 
 " => Command-T
 let g:CommandTMaxHeight = 15
-set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,node_modules/**
+set wildignore+=*.o,*.obj,.git,*.pyc,*.exe,*.aux,*.dvi,*.dll,node_modules/**,.DS_Store
 noremap <leader>y :CommandTFlush<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 let g:CommandTMatchWindowReverse = 1
@@ -729,6 +731,8 @@ function DSizeToggle()
 endfunction
 command! DSize call DSizeToggle()
 map <f3> :DSize<cr>
+
+command! -nargs=+ DGet execute 'enew' | execute 'r !curl -s <args>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Blogging and notes
