@@ -722,6 +722,13 @@ function DSizeToggle()
     	set lines=100
         set columns=400
         let g:DSizeToggleCols=9999
+
+    elseif g:DSizeToggleCols == 9999
+    	set lines=100
+        set columns=152
+        let g:DSizeToggleCols = 800
+        winpos 0 0
+
     else
     	set lines=50
         set columns=130
