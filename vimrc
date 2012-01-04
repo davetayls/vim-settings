@@ -606,7 +606,7 @@ map <leader>fl :FufLine<CR>
 let g:fuf_keyOpenSplit='<C-i>'
 let g:fuf_keyOpenVsplit='<C-s>'
 let g:fuf_autoPreview = 0
-let g:fuf_previewHeight = 4
+let g:fuf_previewHeight = 1
 let g:fuf_buffer_mruOrder = 1
 
 " => NERDTree
