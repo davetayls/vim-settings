@@ -744,8 +744,5 @@ command! -nargs=+ DGet execute 'enew' | execute 'r !curl -s <args>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Blogging and notes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if MySys() == "mac"
-	helptags /Users/davetayls/Dropbox/notes/
-endif
 cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
 cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>
