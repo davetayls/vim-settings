@@ -14,7 +14,7 @@
 " - Parenthesis/bracket expanding/folding
 " - General Abbrevs
 " - Calculations
-" - Editing mappings
+" - Editing_mappings
 " - Cope
 " - Omni complete functions
 " - Spell checking
@@ -458,11 +458,12 @@ iab xdate <c-r>=strftime("%Y-%m-%d")<cr>
 imap <leader>em <c-r>=.0/12<left><left><left><left><left>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" => Editing_mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
+nmap <enter> i<cr><esc>
 
 "Dont yank deleted line in visual line paste
 vmap p p:let @"=@0<cr>

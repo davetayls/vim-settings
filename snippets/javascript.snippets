@@ -243,13 +243,14 @@ snippet define general
 	/*global define, require */
 	define(
 	[
-	    'jquery/core'
+	    'jquery/core'${1}
 	],
 	function($){
 		'use strict';
 
 		return {
 			init: function(){
+				${3}
 			}
 		};
 	});
@@ -259,9 +260,9 @@ snippet define jquery/core
 	*/
 	/*jslint browser: true, vars: true, white: true, forin: true */
 	/*global define, require */
-	define([], function(){
+	define(function(){
 		'use strict';
-		return window.jQuery;
+		return window.jQuery.noConflict();
 	});
 snippet define return Object
 	if (window.define && window.define.amd) {
@@ -306,3 +307,27 @@ snippet require main
 		'use strict';
 
 	});
+#
+# commonjs
+# --------------------------------------------
+snippet packagejson
+	{
+		"name": "${1}",
+		"version": "0.0.1",
+		"author": "davetayls <dave@the-taylors.org>",
+		"description": "${2}",
+		"bin": {
+			"http-server": "./bin/http-server"
+		},
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/${3}.git"
+		},
+		"keywords": [
+			"${4}"
+		],
+		"dependencies" : { },
+		"devDependencies": { },
+		"license": "MIT"
+	}
+
