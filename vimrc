@@ -616,7 +616,7 @@ let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
-let g:NERDTreeIgnore=['\~$','\.svn', '.DS_Store']
+let g:NERDTreeIgnore=['\~$','\.svn', '.DS_Store', '.cs$', '.designer']
 
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 nmap <leader>nt :NERDTree<CR>
