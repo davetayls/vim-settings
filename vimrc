@@ -652,6 +652,9 @@ let g:gist_detect_filetype = 1
 let g:VCalc_Win_Size = 5
 let g:VCalc_WindowPosition = 'bottom'
 
+" => Pathogen
+call pathogen#infect('~/vim-settings/bundle')
+
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -747,3 +750,4 @@ command! -nargs=+ DGet execute 'enew' | execute 'r !curl -s <args>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cabbrev DBlog cd ~/Sites/davetayls/davetayls.github.com/
 cabbrev Dnewpost e ~/Sites/davetayls/davetayls.github.com/drafts/=strftime("%Y-%m-%d")-.mkd<left><left><left><left>
+

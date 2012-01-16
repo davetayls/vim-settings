@@ -1,0 +1,3 @@
+[submodule "bundle/jasmine"]
+	path = bundle/jasmine
+	url = git://github.com/claco/jasmine.vim.git
