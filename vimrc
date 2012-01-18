@@ -463,7 +463,6 @@ imap <leader>em <c-r>=.0/12<left><left><left><left><left>
 "Remap VIM home/end keys
 map 0 ^
 map 4 $
-nmap <enter> i<cr><esc>
 
 "Dont yank deleted line in visual line paste
 vmap p p:let @"=@0<cr>
