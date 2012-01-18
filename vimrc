@@ -613,7 +613,7 @@ let g:fuf_buffer_mruOrder = 1
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
 let g:NERDTreeHighlightCursorline=1
-let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=0
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['\~$','\.svn', '.DS_Store', '.cs$', '.designer']
 
