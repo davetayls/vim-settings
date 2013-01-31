@@ -10,9 +10,12 @@ Install
 - Update the paths.
 
 fun! MySys()
-   return "$1"
+   return "mac"
 endfun
 
-set runtimepath=~/.vim_runtime,~/.vim_runtime/after,\$VIMRUNTIME
-source ~/.vim_runtime/vimrc
-helptags ~/.vim_runtime/doc' > ~/.vimrc
+set runtimepath=~/vim-settings,~/vim-settings/after,\$VIMRUNTIME
+source ~/vim-settings/vimrc
+helptags ~/vim-settings/doc 
+"> ~/.vimrc
+
+
